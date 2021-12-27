@@ -1,8 +1,25 @@
 .p-sidebar-right .p-sidebar {
-    width: 21rem;
-    height: 88%;
-    bottom: 0px;
-    border-top-left-radius: 18px;
-    border-bottom-left-radius: 18px;
-    margin-top: 80px;
+	width: 21rem;
+	height: 88%;
+	bottom: 0px;
+	border-top-left-radius: 18px;
+	border-bottom-left-radius: 18px;
+	margin-top: 80px;
+}
+.bento-menu {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: 2px;
+	grid-row-gap: 2px;
+	height: 18px;
+	width: 18px;
+}
+
+.bento-dot {
+	width: 4px;
+	height: 4px;
+	border-radius: 100px;
+	background: gray;
+	overflow: hidden;
 }
