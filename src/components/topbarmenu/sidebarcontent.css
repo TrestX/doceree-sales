@@ -1,0 +1,26 @@
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+    background-color:white !important;
+    box-shadow: none !important;
+    border:none !important;
+} 
+.p-accordion .p-accordion-tab {
+    box-shadow: none !important;
+}
+.p-accordion .p-accordion-header .p-accordion-header-link {
+    background-color:white !important;
+    box-shadow: none !important;
+    border:none !important;
+} 
+
+.p-accordion .p-accordion-header{
+    border:none !important;
+    font-size: 11px !important;
+} 
+
+
+.p-accordion .p-toggleable-content .p-accordion-content{
+    border:none !important;
+} 
+.p-accordion .p-accordion-tab .p-accordion-toggle-icon {
+    font-size: 11px !important;
+}

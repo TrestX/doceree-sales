@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'primeflex/primeflex.css';
+import 'primereact/resources/themes/md-light-deeppurple/theme.css';  //theme
+import 'primereact/resources/primereact.min.css';                  //core css
+import 'primeicons/primeicons.css';                
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

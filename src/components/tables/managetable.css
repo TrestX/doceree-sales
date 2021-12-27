@@ -1,0 +1,21 @@
+.p-datatable .p-datatable-thead > tr > th {
+    font-size:12px;
+}
+
+.p-datatable .p-datatable-tbody > tr > td .p-row-toggler:enabled{
+    transform:rotate(90deg);
+}
+
+.p-menu .p-menuitem-link .p-menuitem-icon {
+    font-size:11px;
+}
+
+.p-dialog .p-dialog-content{
+    border-bottom-left-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.p-dialog .p-dialog-header{
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
+}
