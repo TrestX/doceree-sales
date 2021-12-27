@@ -1,0 +1,18 @@
+.p-inputtextarea{
+    max-height: 100% !important;
+}
+.p-inputtext{
+    width:100%;
+    max-width: 100% !important;
+}
+
+.custInp{
+    min-width:100% !important;
+    width:100%;
+    max-width:100% !important;
+    max-height:18px;
+    font-size:12px;
+    color:gray;
+    border-radius:6px !important;
+}
+

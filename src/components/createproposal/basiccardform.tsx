@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Card1basic from './card1basic';
-const BasicCardForm = ({ title }: { title: string }) => {
+const BasicCardForm = () => {
     return (
 
         <Card1basic />
