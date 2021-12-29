@@ -4,15 +4,12 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import BasicCardForm from '../createproposal/basiccardform';
 import './materialStepper.css';
-import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import { Circle } from '@mui/icons-material';
 import { StepIconProps } from '@mui/material/StepIcon';
 import { styled } from '@mui/material/styles';
+import BasicProposalForm from '../forms/proposal/basic_proposal_form';
+import ProposalBuilderForm from '../forms/proposal/proposal_builder_form';
 const steps = [
     {
         label: 'Basic',
@@ -86,7 +83,7 @@ export default function MaterialStepper() {
                             </div>
                         </StepLabel>
                         <StepContent>
-                            {index === 0 ? <BasicCardForm title={'Basic'} /> : <BasicCardForm title={'Proposal Builder'} />}
+                            {index === 0 ? <BasicProposalForm /> : <ProposalBuilderForm />}
                         </StepContent>
                     </Step>
                 ))}
