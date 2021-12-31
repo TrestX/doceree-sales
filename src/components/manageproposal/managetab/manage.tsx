@@ -18,14 +18,14 @@ export const Manage = () => {
 export const Commercial = () => {
     return (<>
         <div className="p-grid">
-            <div className="p-col-7">
+            <div className="p-md-6 p-lg-7">
                 <div style={{ marginTop: '8px' }}></div>
                 <CustomPrimeInputTextFieldLeftIcon placeholder={'Search'} icon={'search'} width={'100'} />
             </div>
-            <div className="p-col-3" style={{ paddingRight: '2px' }}>
+            <div className="p-md-3 p-lg-3" style={{ paddingRight: '2px' }}>
                 <CustomizedButtons label='Create New Proposal' onClickHandler={() => { console.log(''); }} />
             </div>
-            <div className="p-col-1" style={{ paddingLeft: '2px' }}>
+            <div className="p-md-3 p-lg-2" style={{ paddingLeft: '2px' }}>
                 <CustomizedButtons label='Filter' onClickHandler={() => { console.log(''); }} />
             </div>
         </div>
@@ -38,11 +38,11 @@ export const Commercial = () => {
 export const Activation = () => {
     return (<>
         <div className="p-grid">
-            <div className="p-col-7">
+            <div className="p-col-8">
                 <div style={{ marginTop: '8px' }}></div>
                 <CustomPrimeInputTextFieldLeftIcon placeholder={'Search'} icon={'search'} width={'100'} />
             </div>
-            <div className="p-col-3" style={{ paddingRight: '2px' }}>
+            <div className="p-col-2" style={{ paddingRight: '2px' }}>
                 <CustomizedButtons label='Create New Proposal' onClickHandler={() => { console.log(''); }} />
             </div>
             <div className="p-col-1" style={{ paddingLeft: '2px' }}>
