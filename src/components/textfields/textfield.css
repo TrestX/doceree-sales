@@ -1,10 +1,10 @@
 .p-password input{
-    max-height:18px !important;
+    max-height:18px;
     background-color: #edefffb6 !important;
     font-size:13px;
 }
 .p-inputtext{
-    max-height:18px !important;
+    max-height:18px ;
     background-color: #edefffb6 ;
     font-size:13px;
 }

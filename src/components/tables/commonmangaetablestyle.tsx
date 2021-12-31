@@ -91,7 +91,7 @@ export const reasonBodyTemplate = (rowData) => {
 };
 export const statBodyTemplate = (rowData) => {
     if (rowData.stat==='Approved'){
-        return <i className="pi pi-check-circle" style={{fontSize:'11px',color:'green',textAlign:'center'}}></i>;
+        return <img src="https://img.icons8.com/office/16/000000/checked--v1.png" style={{fontSize:'11px',color:'green',textAlign:'center'}}/> ;
     }else{
         return <span style={{fontSize:'11px',color:'gray',textAlign:'center'}}>{rowData.stat}</span>;
     }

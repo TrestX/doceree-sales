@@ -22,3 +22,11 @@ export function CustomizedPrimeButton({ label,background,color,brad,fs,fw, onCli
 		</>
 	);
 }
+
+
+export function CustomizedPrimeDButton({ label,background,color,brad,fs,fw, onClickHandler,onDoubleClick }: { label: string,background:string,color:string,brad:string,fs:string,fw:number, onClickHandler,onDoubleClick}) {
+	return (
+		<>		    <Button label={label} style={{borderRadius:brad, background:background,color:color,fontWeight:fw, fontSize:fs,paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler} onDoubleClick={onDoubleClick}/>
+		</>
+	);
+}

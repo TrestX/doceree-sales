@@ -8,7 +8,7 @@ export const data = [
         duration: '22 July-23 Aug 2021',
         estimatedBudget: '$3214',
         dataProduct: 'Target',
-        proposalStatus: 'Approved',
+        proposalStatus: 'Submitted',
         campaigns: '3',
         created: '26 July',
         saleRep: 'Tom'
@@ -22,7 +22,7 @@ export const data = [
         duration: '22 July-23 Aug 2021',
         estimatedBudget: '$3214',
         dataProduct: 'Target',
-        proposalStatus: 'Approved',
+        proposalStatus: 'In Review',
         campaigns: '3',
         created: '26 July',
         saleRep: 'Tom'
@@ -50,7 +50,7 @@ export const data = [
         duration: '22 July-23 Aug 2021',
         estimatedBudget: '$3214',
         dataProduct: 'Target',
-        proposalStatus: 'Approved',
+        proposalStatus: 'Rejected',
         campaigns: '3',
         created: '26 July',
         saleRep: 'Tom'
@@ -64,7 +64,7 @@ export const data = [
         duration: '22 July-23 Aug 2021',
         estimatedBudget: '$3214',
         dataProduct: 'Target',
-        proposalStatus: 'Approved',
+        proposalStatus: 'In Review',
         campaigns: '3',
         created: '26 July',
         saleRep: 'Tom'
@@ -78,7 +78,7 @@ export const data = [
         duration: '22 July-23 Aug 2021',
         estimatedBudget: '$3214',
         dataProduct: 'Target',
-        proposalStatus: 'Approved',
+        proposalStatus: 'To Do',
         campaigns: '3',
         created: '26 July',
         saleRep: 'Tom'
@@ -87,6 +87,26 @@ export const data = [
 
 
 export const ellipiseitems = [
+    {
+        label: 'View',
+        icon: 'pi pi-eye',
+    },
+    {
+        label: 'Create Version',
+        icon: 'pi pi-plus',
+
+    },
+    {
+        label: 'Download',
+        icon: 'pi pi-arrow-down',
+    },
+    {
+        label: 'Delete',
+        icon: 'pi pi-trash',
+    },
+];
+
+export const ellipiseitemsToDo = [
     {
         label: 'View/Edit',
         icon: 'pi pi-eye',

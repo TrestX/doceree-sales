@@ -18,7 +18,7 @@ const RateTable = () => {
             <div >
                 <DataTable value={data}
                     responsiveLayout="scroll" selectionMode="radiobutton" selection={selectedRow} onSelectionChange={e => setSelectedRow(e.value)} dataKey="id" stripedRows paginator rows={10}>
-<Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>
+{sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType')==='admin' && <Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>}
 <Column field="networkType" header="Network Type" body={networkBodyTemplate}></Column>
 <Column field="adFormat" header="Ad Format" body={adForBodyTemplate}></Column>
 <Column field="measurement" header="Measurement" body={measurementBodyTemplate}></Column>
@@ -29,7 +29,7 @@ const RateTable = () => {
 <Column field="baseCPV" header="BaseCPV" body={cpvBodyTemplate}></Column>
 <Column field="taf" header="TAF" body={tafBodyTemplate} ></Column>
 <Column field="msf" header="MSF" body={msfBodyTemplate}></Column>
-<Column body={actionBodyTemplate} style={{ minWidth: '8rem' }}></Column>
+{sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType')==='admin' && <Column body={actionBodyTemplate} style={{ minWidth: '8rem' }}></Column>}
 </DataTable>
             </div>
         </div>

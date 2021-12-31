@@ -5,12 +5,15 @@ import './managetable.css';
 import {data} from './discountTableConst';
 import {CustomizedPButtonsNI} from '../buttons/pbutton';
 import { clientNameBodyTemplate, disCompBodyTemplate, distypBodyTemplate, plannedBudgetBodyTemplate,  proposalNumbBodyTemplate, reasonBodyTemplate, reqDisBodyTemplate, saleRepBodyTemplate, statBodyTemplate } from './commonmangaetablestyle';
+import { Dialog } from 'primereact/dialog';
+import { ManageProposalRejectDialogCon } from '../dialog/primedialog';
+import { Toast } from 'primereact/toast';
 const DiscountTable = () => {
+    const toast = useRef(null);
+    const [rejectedD,setRejectedD] = useState(false);
     const actionBodyTemplate=()=>{
         return <>
-        <CustomizedPButtonsNI label={'Reject'} fw={600} background={'#ffe2d6'} color={'#f26824'} border={'none'} fs={'10px'} onClickHandler={function (): void {
-                throw new Error('Function not implemented.');
-            } }/>
+        <CustomizedPButtonsNI label={'Reject'} fw={600} background={'#ffe2d6'} color={'#f26824'} border={'none'} fs={'10px'} onClickHandler={()=>setRejectedD(true)}/>
         <CustomizedPButtonsNI label={'Ask for Revision'} fw={600} background={'#e2debc'} color={'#494948'} border={'none'} fs={'10px'} onClickHandler={function (): void {
                 throw new Error('Function not implemented.');
             } }/>
@@ -21,6 +24,7 @@ const DiscountTable = () => {
     };
     return (
         <>
+                         <Toast ref={toast} />
         <div >
             <div className="p-shadow-5" >
                 <DataTable value={data}
@@ -40,6 +44,9 @@ const DiscountTable = () => {
                 </DataTable>
             </div>
         </div>
+        <Dialog header="" visible={rejectedD} style={{ width: '30vw',borderRadius:'19px' }} onHide={() => setRejectedD(false)}>
+            <ManageProposalRejectDialogCon toas={toast}/>
+        </Dialog>
         </>
     );
 };

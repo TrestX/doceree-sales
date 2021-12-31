@@ -19,3 +19,22 @@
     border-top-left-radius: 19px;
     border-top-right-radius: 19px;
 }
+
+.submitted{
+    color:#892af7;
+}
+.approved{
+    color:green;
+}
+.rejected{
+    color:#bc1a1a;
+}
+.inreview{
+    color:#e5a629;
+}
+.replyawaited{
+    color:#2952e5;
+}
+.todo{
+    color:#6d1368;
+}

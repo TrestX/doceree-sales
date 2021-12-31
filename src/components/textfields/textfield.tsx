@@ -44,12 +44,12 @@ export function CustomTextFieldWithIcon({ label, placeholder, type = 'string', i
 }
 
 
-export function CustomPrimePasswordTextField({ placeholder}: { placeholder: string}) {
-    return <Password placeholder={placeholder} toggleMask feedback={false}/>;
+export function CustomPrimePasswordTextField({ placeholder,password}: { placeholder: string, password:React.Dispatch<React.SetStateAction<string>>}) {
+    return <Password placeholder={placeholder} toggleMask feedback={false} onChange={(e)=>{password(e.target.value);}}/>;
 }
 
-export function CustomPrimeInputTextField({ placeholder }: { placeholder: string}) {
-    return <InputText placeholder={placeholder} />;
+export function CustomPrimeInputTextField({ placeholder,email }: { placeholder: string,email:React.Dispatch<React.SetStateAction<string>>}) {
+    return <InputText placeholder={placeholder} onChange={(e)=>{email(e.target.value);}}/>;
 }
 
 export function CustomPrimeInputTextFieldLeftIcon({ placeholder,icon,width }: { placeholder: string,icon:string,width:string}) {

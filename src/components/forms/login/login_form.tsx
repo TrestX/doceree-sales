@@ -4,19 +4,39 @@ import { Box } from '@mui/material';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login_form.css';
+import { Toast } from 'primereact/toast';
+import { useState,useRef } from 'react';
 const LoginForm = () => {
+    const toast = useRef(null);
     const history = useNavigate();
-    const handleOnClick = React.useCallback(() => history('/home'), [history]);
+    const [pass,setPass] = useState('');
+    const [email,setEmail] = useState('');
+    const handleOnClick = () =>{
+        if (email==='admin@doceree.com' && pass==='admin@123'){
+            sessionStorage.setItem('accountType','admin');
+            history('/home');
+            // React.useCallback(() => history('/home'), [history]);
+        }else if(email==='sales@doceree.com' && pass==='sales@123'){
+            sessionStorage.setItem('accountType','sales');
+            history('/manage');
+            // React.useCallback(() => history('/home'), [history]);
+        }else{
+            toast.current.show({severity:'error', summary: 'Invalid Credentials', detail:'User not found', life: 3000});
+        }
+
+    };
+        // 
     return (
         <>
+                    <Toast ref={toast} />
             <div style={{ fontWeight: 400, fontSize: '16px', marginLeft: '10px', marginTop: '10%' }}>LOGIN</div>
             <div style={{ fontWeight: 600, fontSize: '17px', marginTop: '6px', marginLeft: '10px' }}>Unlock the Power</div>
             <div className='p-grid' style={{ marginTop: '16px', marginLeft: '0px' }}>
                 <div className='p-col-12 p-md-6'>
-                    <CustomPrimeInputTextField placeholder={'Email'} />
+                    <CustomPrimeInputTextField placeholder={'Email'} email={setEmail}/>
                 </div>
                 <div className='p-col-12 p-md-6'>
-                    <CustomPrimePasswordTextField placeholder={'Password'} />
+                    <CustomPrimePasswordTextField placeholder={'Password'} password={setPass}/>
                 </div>
 
             </div>

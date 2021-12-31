@@ -17,11 +17,11 @@ const RateDiscountTable = () => {
             <div >
                 <DataTable value={data}
                     responsiveLayout="scroll" dataKey="id" stripedRows paginator rows={10}>
-                    <Column field="distyp" header="Discount Type" style={{ minWidth: '12rem' }} body={distypBodyTemplate}/>
-                    <Column field="val" header="Value" style={{ minWidth: '12rem' }} body={valBodyTemplate}/>
-                    <Column field="dis" header="Discount"  style={{ minWidth: '12rem' }} body={disBodyTemplate}/>
+                    <Column field="distyp" header="Discount Type" style={{ minWidth: '12rem' }} body={distypBodyTemplate} sortable/>
+                    <Column field="val" header="Value" style={{ minWidth: '12rem' }} body={valBodyTemplate} sortable/>
+                    <Column field="dis" header="Discount"  style={{ minWidth: '12rem' }} body={disBodyTemplate} sortable/>
                     <Column field="action" header="Action" style={{ minWidth: '12rem' }} body={actionBodyTemplate}/>
-<Column body={action1BodyTemplate} style={{ minWidth: '12rem' }}></Column>
+                    {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType')==='admin' && <Column body={action1BodyTemplate} style={{ minWidth: '12rem' }}></Column>}
 </DataTable>
             </div>
         </div>
