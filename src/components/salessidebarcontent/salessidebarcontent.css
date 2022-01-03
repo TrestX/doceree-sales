@@ -1,0 +1,10 @@
+.active::before {
+	content: "";
+	position: absolute;
+	height: 44px;
+	border-top-right-radius: 213px;
+	border-bottom-right-radius: 213px;
+	border: 10px solid rgba(250, 250, 250, 0.3);
+	border-bottom-width: 10px;
+	margin-left: -20px;
+}

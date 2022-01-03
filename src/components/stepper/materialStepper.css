@@ -1,0 +1,8 @@
+div[class*="css-"][class*="-MuiCollapse-root-MuiStepContent-transition"] {
+	border: 1px solid lightgray !important;
+	margin-top: -8px !important;
+}
+
+div[class*="css-"][class*="-MuiSvgIcon-root-MuiStepIcon-root"] {
+	color: #6b42f6 !important;
+}

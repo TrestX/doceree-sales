@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Button, { ButtonProps } from '@mui/material/Button';
-
 const ColorButton = styled(Button)<ButtonProps>(() => ({
 	background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)',
 	margin: '10px',
@@ -21,7 +20,7 @@ const ColorButton = styled(Button)<ButtonProps>(() => ({
 	},
 }));
 
-export default function CustomizedButtons({ label, onClickHandler }: { label: string, onClickHandler: () => void }) {
+export function CustomizedButtons({ label, onClickHandler }: { label: string, onClickHandler: () => void }) {
 	return (
 		<>
 			<ColorButton variant="contained" onClick={onClickHandler}>{label}</ColorButton>

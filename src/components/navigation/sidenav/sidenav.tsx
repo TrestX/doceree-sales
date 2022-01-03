@@ -15,7 +15,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   }),
   background: 'linear-gradient(to right,#A45BE4, #6B42F6)',
   borderTopRightRadius: '18px',
-  marginTop: '64px',
+  marginTop: '84px',
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
@@ -63,6 +63,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     backgroundColor: 'red',
     flexShrink: 0,
     whiteSpace: 'nowrap',
+    position:'fixed',
     boxSizing: 'border-box',
     ...(!open && {
       ...closedMixin(theme),

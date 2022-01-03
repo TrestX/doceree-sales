@@ -1,0 +1,28 @@
+.custP{
+    padding:3% 31% 0% 31%;
+    overflow-x: hidden;
+}
+
+@media only screen and (max-width: 1600px) {
+    .custP{
+        padding:3% 28% 0% 28%;
+    }
+  }
+
+  @media only screen and (max-width: 1400px) {
+    .custP{
+        padding:3% 25% 0% 25%;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .custP{
+        padding:3% 21% 0% 21%;
+    }
+  }
+
+  @media only screen and (max-width: 993px) {
+    .custP{
+        padding:3% 0% 0% 0%;
+    }
+  }
