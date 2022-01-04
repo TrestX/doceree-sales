@@ -29,6 +29,7 @@
 }
 .p-selectbutton.p-buttonset .p-button.p-highlight {
 	background-color: #6b42f6;
+	color: white;
 }
 .p-buttonset .p-button:not(:first-of-type):not(:last-of-type) {
 	border-radius: 25px;
