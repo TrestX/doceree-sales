@@ -1,9 +1,9 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import React, { useState, useEffect, useRef } from 'react';
-import './managetable.css';
+import '../../manage_proposals/managetable.css';
 import { data } from './ratetableConst';
-import { adForBodyTemplate, cpcBodyTemplate, cpmBodyTemplate, cpvBodyTemplate, demographicsBodyTemplate, measurementBodyTemplate, msfBodyTemplate, dpfBodyTemplate, networkBodyTemplate, specialityBodyTemplate, tafBodyTemplate, } from './commonmangaetablestyle';
+import { adForBodyTemplate, cpcBodyTemplate, cpmBodyTemplate, cpvBodyTemplate, demographicsBodyTemplate, measurementBodyTemplate, msfBodyTemplate, dpfBodyTemplate, networkBodyTemplate, specialityBodyTemplate, tafBodyTemplate, } from '../../commonmangaetablestyle';
 const RateTable = () => {
     const [selectedRow, setSelectedRow] = useState(null);
     const actionBodyTemplate = () => {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { OutlinedCard } from '../components/cards/cards';
 import SideNav from '../components/navigation/sidenav/sidenav';
 import { Box } from '@mui/material';
-import CollapsibleTable from '../components/tables/colapsableTable';
+import CollapsibleTable from '../components/tables/colapsable_table/colapsableTable';
 
 const LoginPage = () => {
     return (<>
