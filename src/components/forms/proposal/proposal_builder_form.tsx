@@ -74,7 +74,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
 
         }
     };
-    const setAudStringVal = () => {
+    React.useEffect(() => {
         if (selectedAud && selectedAud.length > 0) {
             let str = '';
             for (let i = 0; i < selectedAud.length; i++) {
@@ -86,8 +86,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
             }
             setAudience(str);
         }
-
-    };
+    }, [selectedAud]);
     const dataproducts = (e: any) => {
         const dataProL = dataPro.length > 2 ? dataPro.toString().split(',') : [];
         if (dataProL.includes(e.value)) {
@@ -153,7 +152,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Audience</span>
                             </div>
                             <div className="p-col-6">
-                                <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); setAudStringVal(); }} optionLabel="name" placeholder="Choose audience list" display="chip" />
+                                <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); }} optionLabel="name" placeholder="Choose audience list" display="chip" />
 
                             </div>
                             <div className="p-col-3"></div>
@@ -223,9 +222,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 </span>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <div className="p-col-3" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-client" />
@@ -265,8 +262,6 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
             <Dialog header="" visible={openDialog} style={{ width: '40vw', borderRadius: '19px' }} onHide={() => setOpenDialog(false)}>
                 <CampaignName />
             </Dialog>
-
-
         </>);
 };
 
