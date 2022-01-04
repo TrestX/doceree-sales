@@ -1,0 +1,67 @@
+export const data = [
+    {
+        id: '1',
+        campaignType: 'Text',
+        targetGroup: 'Endocrinology, Diabetes',
+        expectedReach: '7,371',
+        duration: '2',
+        biddingStrategy: 'CPI',
+        cpiRate: '2.90',
+        targetReach: '8',
+        estimatedImpression: '1,17,936',
+        estimatedClicks: '83',
+        netCost: '3,42,014'
+    },
+    {
+        id: '2',
+        campaignType: 'Banner',
+        targetGroup: 'Cardiology',
+        expectedReach: '8,018',
+        duration: '2',
+        biddingStrategy: 'CPI',
+        cpiRate: '3.15',
+        targetReach: '6',
+        estimatedImpression: '96,216',
+        estimatedClicks: '67',
+        netCost: '3,03,080'
+    },
+    {
+        id: '3',
+        campaignType: 'Banner',
+        targetGroup: 'Nephrology',
+        expectedReach: '1,523',
+        duration: '2',
+        biddingStrategy: 'CPI',
+        cpiRate: '2.60',
+        targetReach: '5',
+        estimatedImpression: '15,230',
+        estimatedClicks: '11',
+        netCost: '39,598'
+    },
+    {
+        id: '4',
+        campaignType: 'Text',
+        targetGroup: 'Consulting Physician',
+        expectedReach: '50,205',
+        duration: '2',
+        biddingStrategy: 'CPI',
+        cpiRate: '1.60',
+        targetReach: '4',
+        estimatedImpression: '4,01,640',
+        estimatedClicks: '281',
+        netCost: '6,42,624'
+    },
+    {
+        id: '5',
+        campaignType: 'Banner',
+        targetGroup: 'General Medicine',
+        expectedReach: '51,935',
+        duration: '3',
+        biddingStrategy: 'CPI',
+        cpiRate: '2.60',
+        targetReach: '4',
+        estimatedImpression: '15,230',
+        estimatedClicks: '11',
+        netCost: '50,000'
+    },
+];

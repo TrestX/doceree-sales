@@ -3,11 +3,12 @@ import { Column } from 'primereact/column';
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from 'primereact/menu';
 import './managetable.css';
-import { data, ellipiseitems, ellipiseitemsToDo } from './managetableconst';
+import { data} from './managetableconst';
 import { Dialog } from 'primereact/dialog';
 import { ManageProposalActivationDialogCon, ManageProposalDialogCon, ManageProposalRejectDialogCon } from '../dialog/primedialog';
 import { brandBodyTemplate, campaignsBodyTemplate, clientNameBodyTemplate, createdBodyTemplate, dataProductBodyTemplate, durationBodyTemplate, estimateBudgetBodyTemplate, proposalNumbBodyTemplate, proposalNumbVBodyTemplate, saleRepBodyTemplate } from './commonmangaetablestyle';
 import { Toast } from 'primereact/toast';
+import { ViewProposal } from '../viewmodal/proposalmodal';
 const ManageColTable = () => {
     const toast = useRef(null);
     const [dateRange, setDateRange] = useState<Date | Date[] | undefined>(undefined);
@@ -15,6 +16,7 @@ const ManageColTable = () => {
     const [approvedD, setApprovedD] = useState(false);
     const [rejectedD, setRejectedD] = useState(false);
     const [submitD, setSubmitD] = useState(false);
+    const [viewProp, setViewProp] = useState(false);
     const menu = useRef(null);
     const menu1 = useRef(null);
     const items = [
@@ -41,7 +43,52 @@ const ManageColTable = () => {
         },
     ];
 
-
+    const ellipiseitems = [
+        {
+            label: 'View',
+            icon: 'pi pi-eye',
+            command: () => {
+                setViewProp(true);
+            }
+        },
+        {
+            label: 'Create Version',
+            icon: 'pi pi-plus',
+    
+        },
+        {
+            label: 'Download',
+            icon: 'pi pi-arrow-down',
+        },
+        {
+            label: 'Delete',
+            icon: 'pi pi-trash',
+        },
+    ];
+    
+    const ellipiseitemsToDo = [
+        {
+            label: 'View/Edit',
+            icon: 'pi pi-eye',
+            command: () => {
+                setViewProp(true);
+            }
+        },
+        {
+            label: 'Create Version',
+            icon: 'pi pi-plus',
+    
+        },
+        {
+            label: 'Download',
+            icon: 'pi pi-arrow-down',
+        },
+        {
+            label: 'Delete',
+            icon: 'pi pi-trash',
+        },
+    ];
+    
     const proposalStatBodyTemplate = (rowData) => {
 
         return <>
@@ -110,6 +157,9 @@ const ManageColTable = () => {
             </Dialog>
             <Dialog header="" visible={submitD} style={{ width: '45vw', borderRadius: '19px' }} onHide={() => setSubmitD(false)}>
                 <ManageProposalActivationDialogCon />
+            </Dialog>
+            <Dialog header="" visible={viewProp} style={{ width: '90vw', borderRadius: '7px',height:'100vh'}} onHide={() => setViewProp(false)}>
+                <ViewProposal />
             </Dialog>
 
         </>
