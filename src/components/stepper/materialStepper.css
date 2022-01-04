@@ -1,6 +1,7 @@
 div[class*="css-"][class*="-MuiCollapse-root-MuiStepContent-transition"] {
 	border: 1px solid lightgray !important;
 	margin-top: -8px !important;
+	margin-right: -8px;
 }
 
 div[class*="css-"][class*="-MuiSvgIcon-root-MuiStepIcon-root"] {

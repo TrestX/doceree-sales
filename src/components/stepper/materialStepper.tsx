@@ -121,16 +121,16 @@ export default function MaterialStepper({ manageService, setManageService, dataP
 
     return (
         <>
-            <Box sx={{ maxWidth: 750 }}>
+            <Box>
                 <Stepper activeStep={activeStep} orientation="vertical">
                     {steps.map((step, index) => (
-                        <Step key={step.label} >
+                        <Step key={step.label}>
                             <StepLabel StepIconComponent={ColorlibStepIcon} onClick={() => { activeStep === 0 ? handleNext() : handleBack(); }}>
                                 <div style={{ padding: '10px', background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)', borderRadius: '7px 7px 0px 0px', textAlign: 'left', color: 'white', fontWeight: 600, fontSize: '12px', }}>
                                     <span style={{ marginLeft: '10px' }}>{step.label}</span>
                                 </div>
                             </StepLabel>
-                            <StepContent>
+                            <StepContent >
                                 {index === 0 ? <BasicProposalForm agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} onNext={handleNext} /> : <ProposalBuilderForm manageService={manageService} setManageService={setManageService}
                                     dataPro={dataPro} setDataPro={setDataPro} network={network} setNetwork={setNetwork} setCampaignType={setCampaignType}
                                     campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}

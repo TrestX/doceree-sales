@@ -10,3 +10,6 @@ export const sideBarContent = [
     { icon: 'pencil', title: 'Create Proposal', link: '/createproposal' },
     { icon: 'percentage', title: 'Rate Card', link: '/rate' },
 ];
+export const sideBarContentFinance = [
+    { icon: 'user', title: 'Manage Commercials', link: '/managefinance' },
+];

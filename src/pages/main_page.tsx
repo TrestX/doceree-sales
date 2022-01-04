@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import CreateProposalPage from './create_proposal_page';
 import DiscountPage from './discount_page';
+import ManageFinancePage from './finance_manager_page';
+
 import HomePage from './home_page';
 import ManageProposalPage from './manage_proposal_page';
 import RatePage from './rate_page';
@@ -21,6 +23,7 @@ export function MainPage() {
                 <Route path="/" element={<SignInPage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/manage" element={<ManageProposalPage />} />
+                <Route path="/managefinance" element={<ManageFinancePage />} />
                 <Route path="/createproposal" element={<CreateProposalPage />} />
                 <Route path="/discount" element={<DiscountPage />} />
                 <Route path="/review" element={<ReviewPage />} />
