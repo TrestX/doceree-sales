@@ -6,7 +6,7 @@ import { Dropdown } from 'primereact/dropdown';
 import './proposal.css';
 import { Tooltip } from 'primereact/tooltip';
 import ReactFlagsSelect from 'react-flags-select';
-const BasicProposalForm = ({ agency, client, brand, businessObj, market, setAgency, setClient, setBrand, setBusinessObj, setMarket, onNext }: { agency: string, client: string, brand: string, businessObj: string, market: any, setAgency: React.Dispatch<React.SetStateAction<string>>, setClient: React.Dispatch<React.SetStateAction<string>>, setBrand: React.Dispatch<React.SetStateAction<string>>, setBusinessObj: React.Dispatch<React.SetStateAction<string>>, setMarket: any, onNext: () => void }) => {
+const BasicProposalForm = ({ agency, client, brand, businessObj, market, setAgency, setClient, setBrand, setBusinessObj, setMarket, onNext }: { agency: string, client: string, brand: string, businessObj: string, market: string, setAgency: React.Dispatch<React.SetStateAction<string>>, setClient: React.Dispatch<React.SetStateAction<string>>, setBrand: React.Dispatch<React.SetStateAction<string>>, setBusinessObj: React.Dispatch<React.SetStateAction<string>>, setMarket: (string) => void, onNext: () => void }) => {
     const countries = [
         { name: 'United Kingdom', code: 'UK' },
         { name: 'India', code: 'IN' },

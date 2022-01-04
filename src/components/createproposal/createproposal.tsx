@@ -11,7 +11,7 @@ const CreateProposal = () => {
      const [client, setClient] = useState('');
      const [brand, setBrand] = useState('');
      const [businessObj, setBusinessObj] = useState('');
-     const [market, setMarket] = useState<any>(null);
+     const [market, setMarket] = useState<string>('');
      const [network, setNetwork] = useState('');
      const [campaignType, setCampaignType] = useState('');
      const [campaignObj, setCampaignObj] = useState('');
@@ -84,7 +84,7 @@ const CreateProposal = () => {
                                    </div>
                                    <Divider />
                                    <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                        Market: <span style={{ color: 'grey' }}>{market && market.name}</span>
+                                        Market: <span style={{ color: 'grey' }}>{market}</span>
                                    </div>
                                    <Divider />
                                    <Accordion activeIndex={0}>
