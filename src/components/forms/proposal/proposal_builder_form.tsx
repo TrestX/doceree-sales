@@ -42,7 +42,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
     ];
 
     const [selectedAud, setSelectedAud] = useState(null);
-    const [campValue, setCampValue] = useState(null);
+    const [campValue, setCampValue] = useState([]);
     const campaignOptions = [
         { name: 'Banner', value: 'Banner' },
         { name: 'Text', value: 'Text' },
@@ -54,19 +54,11 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
         { name: 'Psychiatry', code: 'Psychiatry' },
         { name: 'Pediatrics', code: 'Pediatrics' },
     ];
-    const setStringVal = () => {
-        if (campValue && campValue.length > 0) {
-            let str = '';
-            for (let i = 0; i < campValue.length; i++) {
-                if (i === 0) {
-                    str = campValue[i];
-                } else {
-                    str = str + ',' + campValue[i];
-                }
-            }
-            setCampaignType(str);
-        }
-    };
+
+    React.useEffect(() => {
+        setCampaignType(campValue.join(','));
+
+    }, [campValue]);
     const multiCheck = (e: any) => {
         const channelL = channel.length > 2 ? channel.toString().split(',') : [];
         if (channelL.includes(e.value)) {
@@ -147,7 +139,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Type</span>
                             </div>
                             <div className="p-col-6">
-                                <SelectButton value={campValue} options={campaignOptions} onChange={(e) => { setCampValue(e.value); setStringVal(); }} optionLabel="name" multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
+                                <SelectButton value={campValue} options={campaignOptions} onChange={(e) => { setCampValue(e.value); }} optionLabel="name" multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
