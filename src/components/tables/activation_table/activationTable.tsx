@@ -51,7 +51,7 @@ const ActivationTable = () => {
         );
     };
     const actionBodyTemplate = (rowData) => {
-        if (rowData.proposalStatus === 'To Do') {
+        if (rowData.proposalStatus === 'To Do' || rowData.proposalStatus === 'In Review') {
             return <><Menu model={ellipiseitemsToDo} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;
         } else {
             return <><Menu model={ellipiseitems} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;

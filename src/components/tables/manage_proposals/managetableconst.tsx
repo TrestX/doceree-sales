@@ -64,7 +64,7 @@ export const data = [
         duration: '22 July-23 Aug 2021',
         estimatedBudget: '$3214',
         dataProduct: 'Target',
-        proposalStatus: 'In Review',
+        proposalStatus: 'To Do',
         campaigns: '3',
         created: '26 July',
         saleRep: 'Tom'

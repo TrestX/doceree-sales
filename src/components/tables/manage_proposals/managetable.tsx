@@ -20,6 +20,7 @@ const ManageColTable = () => {
     const [viewProp, setViewProp] = useState(false);
     const menu = useRef(null);
     const menu1 = useRef(null);
+    const menu2 = useRef(null);
     const items = [
         {
             label: 'Approved',
@@ -43,7 +44,15 @@ const ManageColTable = () => {
             }
         },
     ];
-
+    const itemsInReview = [
+        {
+            label: 'Submitted',
+            icon: 'pi pi-upload',
+            command: () => {
+                setApprovedD(true);
+            }
+        },
+    ];
     const ellipiseitems = [
         {
             label: 'View',
@@ -91,11 +100,16 @@ const ManageColTable = () => {
     ];
 
     const proposalStatBodyTemplate = (rowData) => {
+        let menu = <Menu model={itemsInReview} popup ref={menu1} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '160px' }} />;
+        if (rowData.proposalStatus.includes('Submitted')) {
+            menu = <Menu model={items} popup ref={menu2} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '160px' }} />;
+        }
+
 
         return <>
-            <Menu model={items} popup ref={menu1} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '160px' }} />
+            {menu}
             <span className={`${rowData && rowData.proposalStatus && rowData.proposalStatus.replace(/ /g, '').toLowerCase()}`} style={{ fontSize: '11px', textAlign: 'center' }}>
-                {rowData.proposalStatus} {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType') !== 'admin' && (rowData.proposalStatus === 'Submitted' || rowData.proposalStatus === 'In Review') && <i className="pi pi-chevron-down" style={{ fontSize: '11px', marginLeft: '6px', marginTop: '5px', cursor: 'pointer' }} onClick={(event) => menu1.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i>}</span></>;
+                {rowData.proposalStatus} {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType') !== 'admin' && (rowData.proposalStatus === 'Submitted' || rowData.proposalStatus === 'In Review') && <i className="pi pi-chevron-down" style={{ fontSize: '11px', marginLeft: '6px', marginTop: '5px', cursor: 'pointer' }} onClick={(event) => rowData.proposalStatus !== 'Submitted' ? menu1.current.toggle(event) : menu2.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i>}</span></>;
     };
 
     const rowExpansionTemplate = (daa) => {
@@ -118,7 +132,7 @@ const ManageColTable = () => {
         );
     };
     const actionBodyTemplate = (rowData) => {
-        if (rowData.proposalStatus === 'To Do') {
+        if (rowData.proposalStatus === 'To Do' || rowData.proposalStatus === 'In Review') {
             return <><Menu model={ellipiseitemsToDo} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;
         } else {
             return <><Menu model={ellipiseitems} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;

@@ -6,14 +6,14 @@ import * as React from 'react';
 
 export function ManageHeaderForm() {
     return (<div className="p-grid">
-        <div className="p-col-7">
+        <div className="p-col-8">
             <div style={{ marginTop: '8px' }}></div>
             <CustomPrimeInputTextFieldLeftIcon placeholder={'Search'} icon={'search'} width={'100'} />
         </div>
         <div className="p-col-3" style={{ paddingRight: '2px', textAlign: 'right' }}>
             <CustomizedButtons label='Create New Proposal' onClickHandler={() => { console.log(''); }} />
         </div>
-        <div className="p-col-1" style={{ paddingLeft: '2px' }}>
+        <div className="p-col-1 mr-1" style={{ paddingLeft: '0px', marginLeft: '-20px' }}>
             <CustomizedButtons label='Filter' onClickHandler={() => { console.log(''); }} />
         </div>
     </div>);
