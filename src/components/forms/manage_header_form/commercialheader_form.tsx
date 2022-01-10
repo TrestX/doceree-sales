@@ -10,8 +10,6 @@ export function CommercialHeaderForm() {
             <div style={{ marginTop: '8px' }}></div>
             <CustomPrimeInputTextFieldLeftIcon placeholder={'Search'} icon={'search'} width={'100'} />
         </div>
-        <div className="p-col-3" style={{ paddingRight: '2px', textAlign: 'right' }}>
-        </div>
         <div className="p-col-1 mr-1" style={{ paddingLeft: '0px', marginLeft: '-20px' }}>
             <CustomizedButtons label='Filter' onClickHandler={() => { console.log(''); }} />
         </div>

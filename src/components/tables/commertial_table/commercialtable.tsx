@@ -93,10 +93,10 @@ const CommercialeColTable = () => {
         <>
             <Toast ref={toast} />
             <div >
-                <div className="p-shadow-5" >
+                <div >
                     <DataTable value={data} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                         responsiveLayout="scroll"
-                        rowExpansionTemplate={rowExpansionTemplate} dataKey="id" stripedRows paginator rows={5}>
+                        rowExpansionTemplate={rowExpansionTemplate} dataKey="id" stripedRows rows={5}>
 
                         <Column field="proposalNumber" header="Proposal number" body={proposalNumbBodyTemplate} />
                         <Column field="clientName" header="Client Name" body={clientNameBodyTemplate} />

@@ -26,10 +26,9 @@ const DiscountTable = () => {
         <>
             <Toast ref={toast} />
             <div >
-                <div className="p-shadow-5" >
+                <div style={{ border: '2px solid lightgrey', borderRadius: '10px' }}>
                     <DataTable value={data}
-                        responsiveLayout="scroll" dataKey="id" stripedRows paginator rows={10}>
-
+                        responsiveLayout="scroll" dataKey="id" stripedRows rows={10}>
                         <Column field="proposalNumber" header="Proposal number" body={proposalNumbBodyTemplate} />
                         <Column field="clientName" header="Client" body={clientNameBodyTemplate} />
                         <Column field="plannedBudget" header="Planned Budget" body={plannedBudgetBodyTemplate} />
