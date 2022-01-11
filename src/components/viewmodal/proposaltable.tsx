@@ -9,7 +9,7 @@ const ViewProposalTable = () => {
             <div >
                 <div >
                     <DataTable value={data}
-                        responsiveLayout="scroll" dataKey="id" stripedRows>
+                        responsiveLayout="scroll" dataKey="id" stripedRows style={{ borderRadius: '20px', border: '1px solid lightgrey', backgroundColor: 'white' }}>
 
                         <Column field="campaignType" header="Campaign Type" style={{ fontSize: '10px' }} />
                         <Column field="targetGroup" header="Target Group" style={{ fontSize: '10px' }} />

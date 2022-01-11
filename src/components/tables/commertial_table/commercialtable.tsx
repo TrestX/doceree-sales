@@ -50,15 +50,15 @@ const CommercialeColTable = () => {
         return <>
             {/* <Menu model={items} popup ref={menu1} id="popup_menu" style={{fontSize:'10px',color:'gray',borderRadius:'14px',maxWidth:'160px'}}/> */}
             <span className={`${rowData && rowData.proposalStatus && rowData.proposalStatus.replace(/ /g, '').toLowerCase()}`} style={{ fontSize: '11px', textAlign: 'center' }}>
-            {rowData.proposalStatus === 'Approved' && <i className="pi pi-check" style={{color:'green',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'Reply awaited' && <i className="pi pi-pause" style={{color:'#2952e5',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'Rejected' && <i className="pi pi-exclamation-circle" style={{color:'#bc1a1a',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'To Do' && <i className="pi pi-align-justify" style={{color:'#6d1368',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'Submitted' && <i className="pi pi-chevron-right" style={{color:'#892af7',fontSize:'9.5px',marginRight:'5px'}}></i>}                
-                {rowData.proposalStatus === 'Draft' && <i className="pi pi-ellipsis-h" style={{color:'#fcbf07',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'In Review' && <i className="pi pi-wifi" style={{color:'#e5a629',fontSize:'9.5px',marginRight:'5px'}}></i>}                
-                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{color:'#00ddff',fontSize:'9.5px',marginRight:'5px'}}></i>}                
-                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{color:'#00ddff'}}></i>}  
+                {rowData.proposalStatus === 'Approved' && <i className="pi pi-check" style={{ color: 'green', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Reply awaited' && <i className="pi pi-pause" style={{ color: '#2952e5', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Rejected' && <i className="pi pi-exclamation-circle" style={{ color: '#bc1a1a', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'To Do' && <i className="pi pi-align-justify" style={{ color: '#6d1368', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Submitted' && <i className="pi pi-chevron-right" style={{ color: '#892af7', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Draft' && <i className="pi pi-ellipsis-h" style={{ color: '#fcbf07', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'In Review' && <i className="pi pi-wifi" style={{ color: '#e5a629', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{ color: '#00ddff', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{ color: '#00ddff' }}></i>}
                 {rowData.proposalStatus}</span></>;
     };
     const rowExpansionTemplate = (daa) => {
@@ -105,7 +105,7 @@ const CommercialeColTable = () => {
                 <div >
                     <DataTable value={data} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                         responsiveLayout="scroll"
-                        rowExpansionTemplate={rowExpansionTemplate} dataKey="id" stripedRows rows={5}>
+                        rowExpansionTemplate={rowExpansionTemplate} dataKey="id" stripedRows rows={5} style={{ borderRadius: '20px', border: '1px solid lightgrey', backgroundColor: 'white' }}>
 
                         <Column field="proposalNumber" header="Proposal number" body={proposalNumbBodyTemplate} />
                         <Column field="clientName" header="Client Name" body={clientNameBodyTemplate} />

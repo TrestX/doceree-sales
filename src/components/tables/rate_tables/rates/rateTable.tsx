@@ -17,7 +17,7 @@ const RateTable = () => {
             <div >
                 <div >
                     <DataTable value={data}
-                        responsiveLayout="scroll" selectionMode="radiobutton" selection={selectedRow} onSelectionChange={e => setSelectedRow(e.value)} dataKey="id" stripedRows rows={10}>
+                        responsiveLayout="scroll" selectionMode="radiobutton" selection={selectedRow} onSelectionChange={e => setSelectedRow(e.value)} dataKey="id" stripedRows rows={10} style={{ borderRadius: '20px', border: '1px solid lightgrey', backgroundColor: 'white' }}>
                         {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType') === 'admin' && <Column selectionMode="single" headerStyle={{ width: '3rem' }}></Column>}
                         <Column field="networkType" header="Network Type" body={networkBodyTemplate}></Column>
                         <Column field="adFormat" header="Ad Format" body={adForBodyTemplate}></Column>

@@ -16,7 +16,7 @@ const RateDiscountTable = () => {
             <div >
                 <div >
                     <DataTable value={data}
-                        responsiveLayout="scroll" dataKey="id" stripedRows rows={10}>
+                        responsiveLayout="scroll" dataKey="id" stripedRows rows={10} style={{ borderRadius: '20px', border: '1px solid lightgrey', backgroundColor: 'white' }}>
                         <Column field="distyp" header="Discount Type" style={{ minWidth: '12rem' }} body={distypBodyTemplate} sortable />
                         <Column field="val" header="Value" style={{ minWidth: '12rem' }} body={valBodyTemplate} sortable />
                         <Column field="dis" header="Discount" style={{ minWidth: '12rem' }} body={disBodyTemplate} sortable />

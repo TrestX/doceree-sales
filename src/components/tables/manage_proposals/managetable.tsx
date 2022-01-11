@@ -24,7 +24,7 @@ const ManageColTable = () => {
     const items = [
         {
             label: 'Approved',
-            icon: 'pi pi-check',
+            icon: 'pi pi-check-circle',
             command: () => {
                 setApprovedD(true);
             }
@@ -109,14 +109,14 @@ const ManageColTable = () => {
         return <>
             {menu}
             <span className={`${rowData && rowData.proposalStatus && rowData.proposalStatus.replace(/ /g, '').toLowerCase()}`} style={{ fontSize: '11px', textAlign: 'center' }}>
-                {rowData.proposalStatus === 'Approved' && <i className="pi pi-check" style={{color:'green',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'Reply awaited' && <i className="pi pi-pause" style={{color:'#2952e5',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'Rejected' && <i className="pi pi-exclamation-circle" style={{color:'#bc1a1a',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'To Do' && <i className="pi pi-align-justify" style={{color:'#6d1368',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'Submitted' && <i className="pi pi-chevron-right" style={{color:'#892af7',fontSize:'9.5px',marginRight:'5px'}}></i>}                
-                {rowData.proposalStatus === 'Draft' && <i className="pi pi-ellipsis-h" style={{color:'#fcbf07',fontSize:'9.5px',marginRight:'5px'}}></i>}
-                {rowData.proposalStatus === 'In Review' && <i className="pi pi-wifi" style={{color:'#e5a629',fontSize:'9.5px',marginRight:'5px'}}></i>}                
-                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{color:'#00ddff',fontSize:'9.5px',marginRight:'5px'}}></i>}                
+                {rowData.proposalStatus === 'Approved' && <i className="pi pi-check-circle" style={{ color: 'green', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Reply awaited' && <i className="pi pi-pause" style={{ color: '#2952e5', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Rejected' && <i className="pi pi-exclamation-circle" style={{ color: '#bc1a1a', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'To Do' && <i className="pi pi-align-justify" style={{ color: '#6d1368', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Submitted' && <i className="pi pi-chevron-right" style={{ color: '#892af7', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Draft' && <i className="pi pi-ellipsis-h" style={{ color: '#fcbf07', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'In Review' && <i className="pi pi-wifi" style={{ color: '#e5a629', fontSize: '9.5px', marginRight: '5px' }}></i>}
+                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{ color: '#00ddff', fontSize: '9.5px', marginRight: '5px' }}></i>}
                 {rowData.proposalStatus} {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType') !== 'admin' && (rowData.proposalStatus === 'Submitted' || rowData.proposalStatus === 'In Review') && <i className="pi pi-chevron-down" style={{ fontSize: '11px', marginLeft: '6px', marginTop: '5px', cursor: 'pointer' }} onClick={(event) => rowData.proposalStatus !== 'Submitted' ? menu1.current.toggle(event) : menu2.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i>}</span></>;
     };
 
