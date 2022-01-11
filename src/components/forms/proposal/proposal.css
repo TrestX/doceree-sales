@@ -50,7 +50,9 @@
 	padding: 2px 10px;
 	font-size: 12px;
 }
-
+.spech .p-inputtext{
+	max-height: 55px !important;
+}
 .p-input-icon-left > i:first-of-type,
 .p-input-icon-left > svg:first-of-type,
 .p-input-icon-left > .p-input-prefix {

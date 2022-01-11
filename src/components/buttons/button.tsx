@@ -20,7 +20,7 @@ const ColorButton = styled(Button)<ButtonProps>(() => ({
 	},
 }));
 
-export function CustomizedButtons({ label, onClickHandler }: { label: string, onClickHandler: () => void }) {
+export function CustomizedButtons({ label, onClickHandler }: { label: string, onClickHandler: (e) => void }) {
 	return (
 		<>
 			<ColorButton variant="contained" onClick={onClickHandler}>{label}</ColorButton>

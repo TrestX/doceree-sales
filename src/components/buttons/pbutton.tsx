@@ -8,6 +8,12 @@ export function CustomizedPButtons({ label,icon,onClickHandler }: { label: strin
 		</>
 	);
 }
+export function CustomizedPTButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: () => void }) {
+	return (
+		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{backgroundColor:'white',color:'grey',fontSize:'11px',paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler}/>
+		</>
+	);
+}
 
 export function CustomizedPButtonsNI({ label,background,color,border,fs,fw, onClickHandler }: { label: string,background:string,color:string,border:string,fs:string,fw:number, onClickHandler}) {
 	return (

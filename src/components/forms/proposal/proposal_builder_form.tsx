@@ -5,14 +5,19 @@ import { RadioButton } from 'primereact/radiobutton';
 import './proposal.css';
 import { Checkbox } from 'primereact/checkbox';
 import { Tooltip } from 'primereact/tooltip';
-import { CustomizedPButtonsNI, CustomizedPrimeButton, CustomizedPrimeDButton } from '../../buttons/pbutton';
+import { CustomizedPTButtons, CustomizedPButtonsNI, CustomizedPrimeButton, CustomizedPrimeDButton } from '../../buttons/pbutton';
 import { Calendar } from 'primereact/calendar';
 import { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { SelectButton } from 'primereact/selectbutton';
 import { MultiSelect } from 'primereact/multiselect';
+
 import { Dialog } from 'primereact/dialog';
 import { CampaignName } from '../../dialog/primedialog';
+import { TabPanel, TabView } from 'primereact/tabview';
+import { InputSwitch } from 'primereact/inputswitch';
+import CreateAudienceTabView from './createAudienceTabView';
+import { CustomizedButtons } from '../../buttons/button';
 
 const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setDataPro, network, setNetwork, setCampaignType,
     campaignObj, setCampaignObj, audience, setAudience,
@@ -27,6 +32,11 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
     }) => {
     const [tabNumb, setTabNum] = useState(0);
     const [openDialog, setOpenDialog] = useState(false);
+    const [openAddAudDialog, setOpenAddAudDialog] = useState(false);
+
+    const [advancedSwitch, setAdvancedSwitch] = useState(false);
+
+
     const changeTab = (ctabnum: number) => {
         if (tabNumb === 0 && ctabnum === 1) {
             setTabNum(1);
@@ -152,7 +162,8 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Audience</span>
                             </div>
                             <div className="p-col-6">
-                                <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); }} optionLabel="name" placeholder="Choose audience list" display="chip" />
+                                <CustomizedPTButtons label='Add Audience' onClickHandler={() => { setOpenAddAudDialog(true); }} icon={'plus-circle'} />
+                                {/* <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); }} optionLabel="name" placeholder="Choose audience list" display="chip" /> */}
 
                             </div>
                             <div className="p-col-3"></div>
@@ -259,8 +270,47 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                     </div>
                 </div>
             </div>
-            <Dialog header="" visible={openDialog} style={{ width: '40vw', borderRadius: '19px' }} onHide={() => setOpenDialog(false)}>
+            <Dialog visible={openDialog} style={{ width: '40vw', borderRadius: '10px' }} onHide={() => setOpenDialog(false)}>
                 <CampaignName />
+            </Dialog>
+            <Dialog visible={openAddAudDialog} style={{ width: '40vw', borderRadius: '9px' }} onHide={() => setOpenAddAudDialog(false)}>
+                <TabView>
+                    <TabPanel header='Create Audience'>
+                        <CreateAudienceTabView />
+                    </TabPanel>
+                    <TabPanel header='Upload Audience'>
+                        <div className="p-grid" style={{ marginLeft: '12px', maxWidth: '27vw' }}>
+                            <div className="p-col-6">
+                                <div style={{ marginTop: '5px' }}>
+                                    <CustomizedPTButtons label='Upload file' onClickHandler={() => { console.log(''); }} icon={'plus-circle'} />
+                                </div>
+                            </div>
+                            <div className="p-col-6 spech">
+                                <h1 style={{ cursor: 'pointer', fontSize: '12px', color: 'grey' }}>Download Template</h1>
+                            </div>
+                            <div className="p-col-6">
+                                <div style={{ marginTop: '5px' }}>
+                                    <h1 style={{ fontSize: '12px', color: 'black', fontWeight: 700 }}>Advanced
+                                        <span style={{ marginLeft: '20px' }}>
+                                            <InputSwitch checked={advancedSwitch} onChange={(e) => setAdvancedSwitch(e.value)} />
+                                        </span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        {advancedSwitch && <div style={{ marginLeft: '20px' }}><CreateAudienceTabView /></div>}
+                    </TabPanel>
+                </TabView>
+                <div className="p-grid" style={{maxWidth:'30vw'}}>
+                <div className="p-col-5">
+                </div>
+                <div className="p-col-4">
+                <CustomizedButtons label='Cancel' onClickHandler={(e) => { console.log(e);}} />
+                </div>
+                <div className="p-col-3">
+                <CustomizedButtons label='Save' onClickHandler={(e) => { console.log(e);}} />
+                </div>
+                </div>
             </Dialog>
         </>);
 };
