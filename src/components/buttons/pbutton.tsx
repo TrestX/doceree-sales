@@ -1,61 +1,69 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { Button } from 'primereact/button';
+import Button from '@mui/material/Button';
 
-export function CustomizedPMButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: (e) => void }) {
-	return (
-		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{	background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)',
-		margin: '10px',
-		padding: '7px 45px',
-		transition: '0.5s',
-		textAlign: 'left',
-		fontSize: '12px',
-		color: 'white',
-		boxShadow: '0 0 20px #eee',
-		borderRadius: '30px',
-		textTransform: 'none'}} onClick={onClickHandler}/>
-		</>
-	);
-}
-export function CustomizedPButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: (e) => void }) {
-	return (
-		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{borderRadius:'25px',border:'1px solid grey', backgroundColor:'white',color:'grey',fontSize:'11px',paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler}/>
-		</>
-	);
-}
-export function CustomizedPTButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: () => void }) {
-	return (
-		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{backgroundColor:'white',color:'grey',fontSize:'11px',paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler}/>
-		</>
-	);
-}
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
-export function CustomizedPButtonsNI({ label,background,color,border,fs,fw, onClickHandler }: { label: string,background:string,color:string,border:string,fs:string,fw:number, onClickHandler}) {
+import { Button as PButton } from 'primereact/button';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+export function CustomizedPMButtons({ label, icon, direction, onClickHandler }: { label: string, icon: string, direction: boolean, onClickHandler: (e) => void }) {
 	return (
-		<>		    <Button label={label} style={{borderRadius:'25px',border:border, backgroundColor:background,color:color,fontWeight:fw, fontSize:fs,paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler}/>
+		<>
+			<Button variant="contained" startIcon={<FilterAltIcon />} style={{
+				background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)',
+				margin: '10px',
+				padding: '7px 25px',
+				transition: '0.5s',
+				textAlign: 'left',
+				fontSize: '12px',
+				color: 'white',
+				boxShadow: '0 0 20px #eee',
+				borderRadius: '30px',
+				textTransform: 'none'
+			}} endIcon={direction ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />} onClick={onClickHandler} >{label}</Button>
 		</>
 	);
 }
-
-export function CustomizedPrimeButton({ label,background,color,brad,fs,fw, onClickHandler }: { label: string,background:string,color:string,brad:string,fs:string,fw:number, onClickHandler}) {
+export function CustomizedPButtons({ label, icon, onClickHandler }: { label: string, icon: string, onClickHandler: (e) => void }) {
 	return (
-		<>		    <Button label={label} style={{borderRadius:brad, background:background,color:color,fontWeight:fw, fontSize:fs,paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler}/>
+		<>		    <PButton label={label} icon={`pi pi-${icon}`} style={{ borderRadius: '25px', border: '1px solid grey', backgroundColor: 'white', color: 'grey', fontSize: '11px', paddingTop: '4px', paddingBottom: '4px' }} onClick={onClickHandler} />
+		</>
+	);
+}
+export function CustomizedPTButtons({ label, icon, onClickHandler }: { label: string, icon: string, onClickHandler: () => void }) {
+	return (
+		<>		    <PButton label={label} icon={`pi pi-${icon}`} style={{ backgroundColor: 'white', color: 'grey', fontSize: '11px', paddingTop: '4px', paddingBottom: '4px' }} onClick={onClickHandler} />
 		</>
 	);
 }
 
-
-export function CustomizedPrimeButtonCustomPadding({ label,background,color,brad,fs,fw,padding, onClickHandler }: { label: string,background:string,color:string,brad:string,fs:string,fw:number,padding:string, onClickHandler}) {
+export function CustomizedPButtonsNI({ label, background, color, border, fs, fw, onClickHandler }: { label: string, background: string, color: string, border: string, fs: string, fw: number, onClickHandler }) {
 	return (
-		<>		    <Button label={label} style={{borderRadius:brad, background:background,color:color,fontWeight:fw, fontSize:fs,padding:padding}} onClick={onClickHandler}/>
+		<>		    <PButton label={label} style={{ borderRadius: '25px', border: border, backgroundColor: background, color: color, fontWeight: fw, fontSize: fs, paddingTop: '4px', paddingBottom: '4px' }} onClick={onClickHandler} />
+		</>
+	);
+}
+
+export function CustomizedPrimeButton({ label, background, color, brad, fs, fw, onClickHandler }: { label: string, background: string, color: string, brad: string, fs: string, fw: number, onClickHandler }) {
+	return (
+		<>		    <PButton label={label} style={{ borderRadius: brad, background: background, color: color, fontWeight: fw, fontSize: fs, paddingTop: '4px', paddingBottom: '4px' }} onClick={onClickHandler} />
 		</>
 	);
 }
 
 
-export function CustomizedPrimeDButton({ label,background,color,brad,fs,fw, onClickHandler,onDoubleClick }: { label: string,background:string,color:string,brad:string,fs:string,fw:number, onClickHandler,onDoubleClick}) {
+export function CustomizedPrimeButtonCustomPadding({ label, background, color, brad, fs, fw, padding, onClickHandler }: { label: string, background: string, color: string, brad: string, fs: string, fw: number, padding: string, onClickHandler }) {
 	return (
-		<>		    <Button label={label} style={{borderRadius:brad, background:background,color:color,fontWeight:fw, fontSize:fs,paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler} onDoubleClick={onDoubleClick}/>
+		<>		    <PButton label={label} style={{ borderRadius: brad, background: background, color: color, fontWeight: fw, fontSize: fs, padding: padding }} onClick={onClickHandler} />
+		</>
+	);
+}
+
+
+export function CustomizedPrimeDButton({ label, background, color, brad, fs, fw, onClickHandler, onDoubleClick }: { label: string, background: string, color: string, brad: string, fs: string, fw: number, onClickHandler, onDoubleClick }) {
+	return (
+		<>		    <PButton label={label} style={{ borderRadius: brad, background: background, color: color, fontWeight: fw, fontSize: fs, paddingTop: '4px', paddingBottom: '4px' }} onClick={onClickHandler} onDoubleClick={onDoubleClick} />
 		</>
 	);
 }

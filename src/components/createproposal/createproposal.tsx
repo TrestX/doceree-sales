@@ -12,16 +12,17 @@ const CreateProposal = () => {
      const [brand, setBrand] = useState('');
      const [businessObj, setBusinessObj] = useState('');
      const [market, setMarket] = useState<string>('');
-     const [network, setNetwork] = useState('');
-     const [campaignType, setCampaignType] = useState('');
-     const [campaignObj, setCampaignObj] = useState('');
-     const [audience, setAudience] = useState('');
-     const [channel, setChannel] = useState('');
-     const [bidStr, setBidstr] = useState<any>(null);
-     const [durationf, setDurationf] = useState<any>(null);
-     const [durationt, setDurationt] = useState<any>(null);
-     const [reach, setReach] = useState('');
-     const [businessRule, setBusinessRule] = useState(false);
+     const [network, setNetwork] = useState<Map<string, string>>();
+     const [campaignType, setCampaignType] = useState<Map<string, string>>();
+     const [campaignObj, setCampaignObj] = useState<Map<string, string>>();
+     const [audience, setAudience] = useState<Map<string, string>>();
+     const [channel, setChannel] = useState<Map<string, string>>();
+     const [tabs, setTabs] = useState<string[]>();
+     const [bidStr, setBidstr] = useState<Map<string, string>>();
+     const [durationf, setDurationf] = useState<Map<string, any>>();
+     const [durationt, setDurationt] = useState<Map<string, any>>();
+     const [reach, setReach] = useState<Map<string, string>>();
+     const [businessRule, setBusinessRule] = useState<Map<string, boolean>>();
      const [freq, setFreq] = useState<any>(null);
      const [manageService, setManageService] = useState(false);
      const [dataPro, setDataPro] = useState('');
@@ -43,11 +44,21 @@ const CreateProposal = () => {
 
                }]
      };
+
      const option = {
           rotation: -90,
           circumference: 180,
           cutout: '85%',
      };
+     React.useEffect(() => {
+          if (network !== undefined && network.size > 0) {
+               const netTabs = new Array<string>();
+               for (const key of network.keys()) {
+                    netTabs.push(key);                  //Lokesh Raj John
+               }
+               setTabs([...netTabs]);
+          }
+     }, [network]);
      return (
           <>
                <div style={{ marginTop: '40px', marginLeft: '100px', float: 'left', minWidth: '100%', width: '100%', maxWidth: '100%' }}>
@@ -87,35 +98,33 @@ const CreateProposal = () => {
                                         Market: <span style={{ color: 'grey' }}>{market}</span>
                                    </div>
                                    <Divider />
+
                                    <Accordion activeIndex={0}>
-                                        <AccordionTab header="Campaign 1" style={{ color: '#A45BE4 !important' }}>
+                                        {tabs !== undefined && tabs.map((tab, index) => <>  <AccordionTab key={index} header={tab} style={{ color: '#A45BE4 !important' }}>
 
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Network: <span style={{ color: 'grey' }}>{network}</span>
+                                                  Network: <span style={{ color: 'grey' }}>{network[index.toString()]}</span>
                                              </div>
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Campaign Type: <span style={{ color: 'grey' }}>{campaignType}</span>
+                                                  Campaign Type: <span style={{ color: 'grey' }}>{campaignType[index.toString()]}</span>
                                              </div>
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Audience: <span style={{ color: 'grey' }}>{audience}</span>
+                                                  Audience: <span style={{ color: 'grey' }}>{audience[index.toString()]}</span>
                                              </div>
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Channel: <span style={{ color: 'grey' }}>{channel}</span>
+                                                  Channel: <span style={{ color: 'grey' }}>{channel[index.toString()]}</span>
                                              </div>
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Reach: <span style={{ color: 'grey' }}>{reach}</span>
+                                                  Reach: <span style={{ color: 'grey' }}>{reach[index.toString()]}</span>
                                              </div>
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
                                                   Frequency: <span style={{ color: 'grey' }}>312</span>
                                              </div>
                                              <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Duration: <span style={{ color: 'grey' }}>{Math.abs(durationt - durationf) / (1000 * 60 * 60 * 24)}</span>
+                                                  Duration: <span style={{ color: 'grey' }}>{Math.abs(durationt[index.toString()] - durationf[index.toString()]) / (1000 * 60 * 60 * 24)}</span>
                                              </div>
-                                        </AccordionTab>
-                                        <AccordionTab header="Campaign 2" style={{ color: '#A45BE4' }}>
-                                        </AccordionTab>
-                                        <AccordionTab header="Campaign 3" style={{ color: '#A45BE4' }}>
-                                        </AccordionTab>
+                                        </AccordionTab></>
+                                        )}
                                    </Accordion>
                                    <Divider />
                                    <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>

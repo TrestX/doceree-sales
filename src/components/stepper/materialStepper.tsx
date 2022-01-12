@@ -97,11 +97,13 @@ export default function MaterialStepper({ manageService, setManageService, dataP
     durationt, reach, businessRule, freq, setDurationf, setDurationt,
     setReach, setBusinessRule, setFreq, agency, client, brand, businessObj, market, setAgency, setClient, setBrand, setBusinessObj, setMarket }: {
         manageService: boolean, setManageService: React.Dispatch<React.SetStateAction<boolean>>, dataPro: string, setDataPro: React.Dispatch<React.SetStateAction<string>>,
-        network: string, setNetwork: React.Dispatch<React.SetStateAction<string>>, setCampaignType: React.Dispatch<React.SetStateAction<string>>,
-        campaignObj: string, setCampaignObj: React.Dispatch<React.SetStateAction<string>>, audience: string, setAudience: React.Dispatch<React.SetStateAction<string>>,
-        channel: any, setChannel: React.Dispatch<any>, bidStr: any, setBidstr: React.Dispatch<any>, durationf: any,
-        durationt: any, reach: string, businessRule: boolean, freq: any, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
-        setReach: React.Dispatch<React.SetStateAction<string>>, setBusinessRule: React.Dispatch<React.SetStateAction<boolean>>, setFreq: React.Dispatch<any>, agency: string, client: string, brand: string, businessObj: string, market: string, setAgency: React.Dispatch<React.SetStateAction<string>>, setClient: React.Dispatch<React.SetStateAction<string>>, setBrand: React.Dispatch<React.SetStateAction<string>>, setBusinessObj: React.Dispatch<React.SetStateAction<string>>, setMarket: (string) => void
+        network: Map<string, string>, setNetwork: React.Dispatch<React.SetStateAction<Map<string, string>>>, setCampaignType: React.Dispatch<React.SetStateAction<Map<string, string>>>,
+        campaignObj: Map<string, string>, setCampaignObj: React.Dispatch<React.SetStateAction<Map<string, string>>>, audience: Map<string, string>, setAudience: React.Dispatch<React.SetStateAction<Map<string, string>>>,
+        channel: Map<string, string>, setChannel: React.Dispatch<any>, bidStr: Map<string, string>, setBidstr: React.Dispatch<any>, durationf: Map<string, string>,
+        durationt: Map<string, string>, reach: Map<string, string>, businessRule: Map<string, boolean>, freq: Map<string, string>, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
+        setReach: React.Dispatch<React.SetStateAction<Map<string, string>>>, setBusinessRule: React.Dispatch<React.SetStateAction<Map<string, boolean>>>, setFreq: React.Dispatch<any>, agency: string,
+        client: string, brand: string,
+        businessObj: string, market: string, setAgency: React.Dispatch<React.SetStateAction<string>>, setClient: React.Dispatch<React.SetStateAction<string>>, setBrand: React.Dispatch<React.SetStateAction<string>>, setBusinessObj: React.Dispatch<React.SetStateAction<string>>, setMarket: (string) => void
     }) {
     const [activeStep, setActiveStep] = React.useState(0);
     const [openDialog, setOpenDialog] = useState(false);

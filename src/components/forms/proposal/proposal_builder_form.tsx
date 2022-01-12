@@ -20,17 +20,22 @@ import CreateAudienceTabView from './createAudienceTabView';
 import { CustomizedButtons } from '../../buttons/button';
 import TabList from './tablist';
 
-const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setDataPro, network, setNetwork, setCampaignType,
+const ProposalBuilderForm = ({
+    manageService, setManageService, dataPro, setDataPro, network, setNetwork, setCampaignType,
     campaignObj, setCampaignObj, audience, setAudience,
     channel, setChannel, bidStr, setBidstr, durationf,
     durationt, reach, businessRule, freq, setDurationf, setDurationt,
-    setReach, setBusinessRule, setFreq }: {
-        manageService: boolean, setManageService: React.Dispatch<React.SetStateAction<boolean>>, dataPro: string, setDataPro: React.Dispatch<React.SetStateAction<string>>, network: string, setNetwork: React.Dispatch<React.SetStateAction<string>>, setCampaignType: React.Dispatch<React.SetStateAction<string>>,
-        campaignObj: string, setCampaignObj: React.Dispatch<React.SetStateAction<string>>, audience: string, setAudience: React.Dispatch<React.SetStateAction<string>>,
-        channel: any, setChannel: React.Dispatch<any>, bidStr: any, setBidstr: React.Dispatch<any>, durationf: any,
-        durationt: any, reach: string, businessRule: boolean, freq: any, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
-        setReach: React.Dispatch<React.SetStateAction<string>>, setBusinessRule: React.Dispatch<React.SetStateAction<boolean>>, setFreq: React.Dispatch<any>,
-    }) => {
+    setReach, setBusinessRule, setFreq
+}: {
+    manageService: boolean, setManageService: React.Dispatch<React.SetStateAction<boolean>>,
+    dataPro: string, setDataPro: React.Dispatch<React.SetStateAction<string>>, network: Map<string, string>,
+    setNetwork: React.Dispatch<React.SetStateAction<Map<string, string>>>, setCampaignType: React.Dispatch<React.SetStateAction<Map<string, string>>>,
+    campaignObj: Map<string, string>, setCampaignObj: React.Dispatch<React.SetStateAction<Map<string, string>>>,
+    audience: Map<string, string>, setAudience: React.Dispatch<React.SetStateAction<Map<string, string>>>,
+    channel: Map<string, string>, setChannel: React.Dispatch<any>, bidStr: Map<string, string>, setBidstr: React.Dispatch<any>, durationf: Map<string, string>,
+    durationt: Map<string, string>, reach: Map<string, string>, businessRule: Map<string, boolean>, freq: Map<string, string>, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
+    setReach: React.Dispatch<React.SetStateAction<Map<string, string>>>, setBusinessRule: React.Dispatch<React.SetStateAction<Map<string, boolean>>>, setFreq: React.Dispatch<any>
+}) => {
     const [tabNumb, setTabNum] = useState(0);
     const [openDialog, setOpenDialog] = useState(false);
     const [openAddAudDialog, setOpenAddAudDialog] = useState(false);
@@ -42,8 +47,8 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
             setTabNum(ctabnum);
         }
     };
-    const [number,setNumber] = useState(1);
-    const [names,setNames] = useState(['New Campaign']);
+    const [number, setNumber] = useState(1);
+    const [names, setNames] = useState(['Campaign 1']);
 
     const stra = [
         { name: 'CPM', code: 'CPM' },
@@ -54,10 +59,10 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
     const [selectedAud, setSelectedAud] = useState(null);
     const [campValue, setCampValue] = useState([]);
     const campaignOptions = [
-        { name: 'Banner', value: 'Banner',icon: 'pi pi-image' },
-        { name: 'Text', value: 'Text',icon: 'pi pi-qrcode', },
-        { name: 'Email', value: 'Email',icon: 'pi pi-envelope', },
-        { name: 'SMS', value: 'SMS',icon: 'pi pi-comment', },
+        { name: 'Banner', value: 'Banner', icon: 'pi pi-image' },
+        { name: 'Text', value: 'Text', icon: 'pi pi-qrcode', },
+        { name: 'Email', value: 'Email', icon: 'pi pi-envelope', },
+        { name: 'SMS', value: 'SMS', icon: 'pi pi-comment', },
     ];
     const aud = [
         { name: 'Radiology', code: 'Radiology' },
@@ -66,22 +71,35 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
     ];
 
     React.useEffect(() => {
-        setCampaignType(campValue.join(','));
+        const tabName = tabNumb.toString();
+        const tabData = campValue.join(',');
+        const data = new Map<string, string>();
+        data.set(tabName, tabData);
+        setCampaignType(data);
 
     }, [campValue]);
+    React.useEffect(() => {
+        console.log(names);
+    }, [names]);
     const multiCheck = (e: any) => {
-        const channelL = channel.length > 2 ? channel.toString().split(',') : [];
+        const channelL = channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',') : [];
         if (channelL.includes(e.value)) {
             const index = channelL.indexOf(e.value);
             const newC = [...channelL];
             newC.splice(index, 1);
-
-            setChannel(newC.join(','));
+            const tabName = tabNumb.toString();
+            const tabData = newC.join(',');
+            const data = new Map<string, string>();
+            data.set(tabName, tabData);
+            setChannel(data);
         } else {
             const newC = [...channelL];
             newC.push(e.value);
-            setChannel(newC.join(','));
-
+            const tabName = tabNumb.toString();
+            const tabData = newC.join(',');
+            const data = new Map<string, string>();
+            data.set(tabName, tabData);
+            setChannel(data);
         }
     };
     React.useEffect(() => {
@@ -94,7 +112,11 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                     str = str + ',' + selectedAud[i].name;
                 }
             }
-            setAudience(str);
+            const tabName = tabNumb.toString();
+            const tabData = str;
+            const data = new Map<string, string>();
+            data.set(tabName, tabData);
+            setAudience(data);
         }
     }, [selectedAud]);
     const dataproducts = (e: any) => {
@@ -120,29 +142,28 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
             <div className="p-grid" style={{ padding: '4% 10% 4% 10%' }}>
                 <div className="p-col-2" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-agency" />
-
                     <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }} >Campaign <i className="custom-target-icon-agency pi pi-info-circle" data-pr-tooltip="Campaigns" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
                 </div>
                 <div className="p-col-10">
                     <div style={{ textAlign: 'left', marginLeft: '25px' }}>
                         <TabList setOpenDialog={setOpenDialog} changeTab={changeTab} names={names} number={number} tabNumb={tabNumb} setNumber={setNumber} setNames={setNames} />
                     </div>
-                    <div className="p-card" style={{ border: '1px solid black', borderRadius: '17px', padding: '15px', width: '100%' }}>
+                    {names.map((tabName, index) => index === tabNumb && <div key={tabName} className="p-card" style={{ border: '1px solid black', borderRadius: '17px', padding: '15px', width: '100%' }}>
                         <div className="p-grid" style={{ textAlign: 'left' }}>
                             <div className="p-col-3">
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Network</span>
                             </div>
                             <div className="p-col-9">
                                 <span className="p-field-radiobutton" style={{ display: 'inline' }}>
-                                    <RadioButton value="POC" onChange={(e) => { setNetwork(e.value); }} checked={network === 'POC'} />
+                                    <RadioButton value="POC" onChange={(e) => { setNetwork(e.value); }} checked={network !== undefined && network[tabNumb.toString()] === 'POC'} />
                                     <label style={{ fontSize: '11px' }}>POC</label>
                                 </span>
                                 <span className="p-field-radiobutton" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <RadioButton value="Endemic" onChange={(e) => { setNetwork(e.value); }} checked={network === 'Endemic'} />
+                                    <RadioButton value="Endemic" onChange={(e) => { setNetwork(e.value); }} checked={network !== undefined && network[tabNumb.toString()] === 'Endemic'} />
                                     <label style={{ fontSize: '11px' }}>Endemic</label>
                                 </span>
                                 <span className="p-field-radiobutton" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <RadioButton value="Opti-Channel" onChange={(e) => { setNetwork(e.value); }} checked={network === 'Opti-Channel'} />
+                                    <RadioButton value="Opti-Channel" onChange={(e) => { setNetwork(e.value); }} checked={network !== undefined && network[tabNumb.toString()] === 'Opti-Channel'} />
                                     <label style={{ fontSize: '11px' }}>Opti-Channel</label>
                                 </span>
                             </div>
@@ -157,16 +178,20 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Objective</span>
                             </div>
                             <div className="p-col-6">
-                                <InputTextarea rows={4} value={campaignObj} onChange={(e) => { setCampaignObj(e.target.value); }} style={{ width: '100%' }} />
+                                <InputTextarea rows={4} value={campaignObj !== undefined ? campaignObj[tabNumb.toString()] : ''} onChange={(e) => {
+                                    const data = new Map<string, string>();
+                                    data.set(tabNumb.toString(), e.target.value);
+                                    setCampaignObj(data);
+                                }} style={{ width: '100%' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Audience</span>
                             </div>
                             <div className="p-col-6">
-                                <div style={{marginLeft:'-17px'}}>
-                                <CustomizedPTButtons label='Add Audience' onClickHandler={() => { setOpenAddAudDialog(true); }} icon={'plus-circle'} />
-                                {/* <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); }} optionLabel="name" placeholder="Choose audience list" display="chip" /> */}
+                                <div style={{ marginLeft: '-17px' }}>
+                                    <CustomizedPTButtons label='Add Audience' onClickHandler={() => { setOpenAddAudDialog(true); }} icon={'plus-circle'} />
+                                    {/* <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); }} optionLabel="name" placeholder="Choose audience list" display="chip" /> */}
                                 </div>
                             </div>
                             <div className="p-col-3"></div>
@@ -175,15 +200,15 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                             </div>
                             <div className="p-col-6">
                                 <span className="p-field-checkbox" style={{ display: 'inline' }}>
-                                    <Checkbox value="Web" onChange={(e) => { multiCheck(e); }} checked={channel.length > 2 ? channel.toString().split(',').includes('Web') : [].includes('Web')} />
+                                    <Checkbox value="Web" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',').includes('Web') : [].includes('Web')} />
                                     <label style={{ fontSize: '11px', marginTop: '4px' }}>Web</label>
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <Checkbox value="Mobile" onChange={(e) => { multiCheck(e); }} checked={channel.length > 2 ? channel.toString().split(',').includes('Mobile') : [].includes('Mobile')} />
+                                    <Checkbox value="Mobile" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',').includes('Mobile') : [].includes('Mobile')} />
                                     <label style={{ fontSize: '11px', marginTop: '4px' }}>Mobile</label>
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <Checkbox value="Email" onChange={(e) => { multiCheck(e); }} checked={channel.length > 2 ? channel.toString().split(',').includes('Email') : [].includes('Email')} />
+                                    <Checkbox value="Email" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',').includes('Email') : [].includes('Email')} />
                                     <label style={{ fontSize: '11px', marginTop: '4px' }}>Email</label>
                                 </span>
                             </div>
@@ -193,9 +218,9 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                             </div>
                             <div className="p-col-6">
                                 <span>
-                                    <Calendar id="icon" showIcon style={{ width: '45%', maxHeight: '28px', fontSize: '10px' }} value={durationf} onChange={(e) => setDurationf(e.value)} />
+                                    <Calendar id="icon" showIcon style={{ width: '45%', maxHeight: '28px', fontSize: '10px' }} value={durationf !== undefined && durationf[tabNumb.toString()]} onChange={(e) => setDurationf(new Map<string, any>().set(tabNumb.toString(), e.value))} />
                                     <span>
-                                        <Calendar id="icon" showIcon style={{ width: '45%', marginLeft: '10px', maxHeight: '28px', fontSize: '10px' }} value={durationt} onChange={(e) => setDurationt(e.value)} />
+                                        <Calendar id="icon" showIcon style={{ width: '45%', marginLeft: '10px', maxHeight: '28px', fontSize: '10px' }} value={durationt !== undefined && durationt[tabNumb.toString()]} onChange={(e) => setDurationt(new Map<string, any>().set(tabNumb.toString(), e.value))} />
                                     </span>
                                 </span>
                             </div>
@@ -211,7 +236,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Reach</span>
                             </div>
                             <div className="p-col-6">
-                                <InputText className="custInp" placeholder="" value={reach} onChange={(e) => { setReach(e.target.value); }} />
+                                <InputText className="custInp" placeholder="" value={reach !== undefined ? reach[tabNumb.toString()] : ''} onChange={(e) => { setReach(new Map<string, string>().set(tabNumb.toString(), e.target.value)); }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
@@ -236,7 +261,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </div>)}
                 </div>
                 <div className="p-col-3" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-client" />
@@ -274,7 +299,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                 </div>
             </div>
             <Dialog visible={openDialog} style={{ width: '40vw', borderRadius: '10px' }} onHide={() => setOpenDialog(false)}>
-                <CampaignName setNames={setNames} names={names} tabNumb={tabNumb} setOpenDialog={setOpenDialog}/>
+                <CampaignName setNames={setNames} names={names} tabNumb={tabNumb} setOpenDialog={setOpenDialog} />
             </Dialog>
             <Dialog visible={openAddAudDialog} style={{ width: '40vw', borderRadius: '9px' }} onHide={() => setOpenAddAudDialog(false)}>
                 <TabView>
