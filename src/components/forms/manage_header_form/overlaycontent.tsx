@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { CustomizedButtons } from '../../../components/buttons/button';
+import './overlay.css';
 const OverlayContent = () => {
     const [fdate, setFDate] = useState<Date | Date[] | undefined>(undefined);
     const [tdate, setTDate] = useState<Date | Date[] | undefined>(undefined);
@@ -31,7 +32,7 @@ const OverlayContent = () => {
                 <Calendar id="icon" value={tdate} onChange={(e) => setTDate(e.value)} showIcon placeholder="To date" style={{height:'35px'}}/>
                 </div>
                 <div className="p-col-12">
-                <Dropdown value={selectedFilter} options={statuese} onChange={onFilterChange} optionLabel="name" placeholder="Filter by status" style={{width:'100%',height:'50px'}}/>
+                <Dropdown value={selectedFilter} options={statuese} onChange={onFilterChange} optionLabel="name" placeholder="Filter by status" style={{width:'100%'}}/>
                 </div>
                 <div className="p-col-2">
                 </div>

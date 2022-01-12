@@ -2,9 +2,24 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import { Button } from 'primereact/button';
 
-export function CustomizedPButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: () => void }) {
+export function CustomizedPMButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: (e) => void }) {
 	return (
-		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{borderRadius:'25px',border:'1px solid grey', backgroundColor:'white',color:'grey',fontSize:'11px',paddingTop:'4px',paddingBottom:'4px'}}/>
+		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{	background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)',
+		margin: '10px',
+		padding: '7px 45px',
+		transition: '0.5s',
+		textAlign: 'left',
+		fontSize: '12px',
+		color: 'white',
+		boxShadow: '0 0 20px #eee',
+		borderRadius: '30px',
+		textTransform: 'none'}} onClick={onClickHandler}/>
+		</>
+	);
+}
+export function CustomizedPButtons({ label,icon,onClickHandler }: { label: string,icon:string, onClickHandler: (e) => void }) {
+	return (
+		<>		    <Button label={label} icon={`pi pi-${icon}`} style={{borderRadius:'25px',border:'1px solid grey', backgroundColor:'white',color:'grey',fontSize:'11px',paddingTop:'4px',paddingBottom:'4px'}} onClick={onClickHandler}/>
 		</>
 	);
 }

@@ -2,6 +2,7 @@ import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import * as React from 'react';
 import { CustomizedButtons } from '../../buttons/button';
+import { CustomizedPTButtons, CustomizedPButtonsNI, CustomizedPrimeButton, CustomizedPrimeDButton } from '../../buttons/pbutton';
 import { Dropdown } from 'primereact/dropdown';
 import './proposal.css';
 import { Tooltip } from 'primereact/tooltip';

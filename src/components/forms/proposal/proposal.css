@@ -61,6 +61,32 @@
 div[class*="ReactFlagsSelect-module_selectValue_"] {
 	border-radius: 25px !important;
 }
-.p-selectbutton.p-buttonset .p-button {
+div[class*="ReactFlagsSelect-module_selectValue__152eS"] {
 	font-size: 12px !important;
+}
+.ReactFlagsSelect-module_flagsSelect__2pfa2 .ReactFlagsSelect-module_selectBtn__19wW7 .ReactFlagsSelect-module_selectValue__152eS{
+	font-size: 12px !important;
+}
+
+.ReactFlagsSelect-module_flagsSelect__2pfa2 .ReactFlagsSelect-module_selectOptions__3LNBJ{
+	font-size: 12px;
+}
+.p-selectbutton.p-buttonset .p-button .pi {
+	font-size: 12px !important;
+	font-family: 'sans-serif';
+}
+.p-checkbox .p-checkbox-box {
+    border: 1px solid #757575;
+    background: #ffffff;
+    width: 15px;
+    height: 15px;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 4px;
+}
+.p-checkbox .p-checkbox-box {
+    border-radius: 5px;
+}
+.p-dropdown .p-dropdown-label{
+	padding-top:7px;
+	padding-bottom:25px;
 }

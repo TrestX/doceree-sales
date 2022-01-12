@@ -11,7 +11,11 @@
 .p-datatable .p-datatable-tbody > tr > td .p-row-toggler:enabled {
 	transform: rotate(90deg);
 }
-
+.p-datatable table {
+    border-collapse: inherit !important;
+	border: 1px solid lightgray !important;
+	border-radius: 18px !important;
+}
 .p-menu .p-menuitem-link .p-menuitem-icon {
 	font-size: 11px;
 }

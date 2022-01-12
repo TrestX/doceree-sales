@@ -114,7 +114,15 @@ export function ManageProposalActivationDialogCon() {
     );
 }
 
-export function CampaignName() {
+export function CampaignName({names,setNames,tabNumb,setOpenDialog}:{names,setNames,tabNumb,setOpenDialog}) {
+    const [nn,setNN] = useState('');
+    const updateName = () =>{
+        console.log(names);
+        const newL = [...names];
+        newL[tabNumb] = nn;
+        setNames(newL);
+        setOpenDialog(false);
+    };
     return (
         <>
             <div className="p-grid">
@@ -122,13 +130,13 @@ export function CampaignName() {
                     <span style={{fontSize:'12px',color:'grey'}}>Campaign Name</span>
                 </div>
                 <div className="p-col-12">
-                <InputText style={{width:'100%'}}/>
+                <InputText style={{width:'100%'}} onChange={(e)=>{setNN(e.target.value);}}/>
                 </div>
                 <div className="p-col-9">
 
                 </div>
                 <div className="p-col-3">
-                <CustomizedButtons label='Save' onClickHandler={() => {console.log('e');}} />
+                <CustomizedButtons label='Save' onClickHandler={(e)=>{updateName();}} />
                 </div>
             </div>
             </>

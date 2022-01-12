@@ -18,6 +18,7 @@ import { TabPanel, TabView } from 'primereact/tabview';
 import { InputSwitch } from 'primereact/inputswitch';
 import CreateAudienceTabView from './createAudienceTabView';
 import { CustomizedButtons } from '../../buttons/button';
+import TabList from './tablist';
 
 const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setDataPro, network, setNetwork, setCampaignType,
     campaignObj, setCampaignObj, audience, setAudience,
@@ -36,14 +37,13 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
 
     const [advancedSwitch, setAdvancedSwitch] = useState(false);
 
-
     const changeTab = (ctabnum: number) => {
-        if (tabNumb === 0 && ctabnum === 1) {
-            setTabNum(1);
-        } else if (tabNumb === 1 && ctabnum === 0) {
-            setTabNum(0);
+        if (ctabnum !== tabNumb) {
+            setTabNum(ctabnum);
         }
     };
+    const [number,setNumber] = useState(1);
+    const [names,setNames] = useState(['New Campaign']);
 
     const stra = [
         { name: 'CPM', code: 'CPM' },
@@ -54,10 +54,10 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
     const [selectedAud, setSelectedAud] = useState(null);
     const [campValue, setCampValue] = useState([]);
     const campaignOptions = [
-        { name: 'Banner', value: 'Banner' },
-        { name: 'Text', value: 'Text' },
-        { name: 'Email', value: 'Email' },
-        { name: 'SMS', value: 'SMS' },
+        { name: 'Banner', value: 'Banner',icon: 'pi pi-image' },
+        { name: 'Text', value: 'Text',icon: 'pi pi-qrcode', },
+        { name: 'Email', value: 'Email',icon: 'pi pi-envelope', },
+        { name: 'SMS', value: 'SMS',icon: 'pi pi-comment', },
     ];
     const aud = [
         { name: 'Radiology', code: 'Radiology' },
@@ -112,6 +112,9 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
 
         }
     };
+    const campOptsTemplate = (option) => {
+        return <i className={option.icon}><span > {option.name}</span></i>;
+    };
     return (
         <>
             <div className="p-grid" style={{ padding: '4% 10% 4% 10%' }}>
@@ -122,8 +125,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                 </div>
                 <div className="p-col-10">
                     <div style={{ textAlign: 'left', marginLeft: '25px' }}>
-                        <CustomizedPrimeDButton label={'Campaign 1'} fw={600} background={tabNumb === 0 ? 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)' : 'linear-gradient(to right,#dbd9d9 0%, #aaa9a9 70%)'} brad={'7px 7px 0px 0px'} color={'white'} fs={'11px'} onClickHandler={() => { changeTab(0); }} onDoubleClick={() => { setOpenDialog(true); }} />
-                        <CustomizedPrimeDButton label={'Campaign 2'} background={tabNumb === 1 ? 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)' : 'linear-gradient(to right,#dbd9d9 0%, #aaa9a9 70%)'} fw={600} brad={'7px 7px 0px 0px'} color={'white'} fs={'11px'} onClickHandler={() => { changeTab(1); }} onDoubleClick={() => { setOpenDialog(true); }} />
+                        <TabList setOpenDialog={setOpenDialog} changeTab={changeTab} names={names} number={number} tabNumb={tabNumb} setNumber={setNumber} setNames={setNames} />
                     </div>
                     <div className="p-card" style={{ border: '1px solid black', borderRadius: '17px', padding: '15px', width: '100%' }}>
                         <div className="p-grid" style={{ textAlign: 'left' }}>
@@ -148,7 +150,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Type</span>
                             </div>
                             <div className="p-col-6">
-                                <SelectButton value={campValue} options={campaignOptions} onChange={(e) => { setCampValue(e.value); }} optionLabel="name" multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
+                                <SelectButton value={campValue} options={campaignOptions} onChange={(e) => { setCampValue(e.value); }} itemTemplate={campOptsTemplate} multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
@@ -162,9 +164,10 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Audience</span>
                             </div>
                             <div className="p-col-6">
+                                <div style={{marginLeft:'-17px'}}>
                                 <CustomizedPTButtons label='Add Audience' onClickHandler={() => { setOpenAddAudDialog(true); }} icon={'plus-circle'} />
                                 {/* <MultiSelect style={{ width: '100%', padding: '2px' }} value={selectedAud} options={aud} onChange={(e) => { setSelectedAud(e.value); }} optionLabel="name" placeholder="Choose audience list" display="chip" /> */}
-
+                                </div>
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
@@ -271,7 +274,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                 </div>
             </div>
             <Dialog visible={openDialog} style={{ width: '40vw', borderRadius: '10px' }} onHide={() => setOpenDialog(false)}>
-                <CampaignName />
+                <CampaignName setNames={setNames} names={names} tabNumb={tabNumb} setOpenDialog={setOpenDialog}/>
             </Dialog>
             <Dialog visible={openAddAudDialog} style={{ width: '40vw', borderRadius: '9px' }} onHide={() => setOpenAddAudDialog(false)}>
                 <TabView>
@@ -288,7 +291,7 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                             <div className="p-col-6 spech">
                                 <h1 style={{ cursor: 'pointer', fontSize: '12px', color: 'grey' }}>Download Template</h1>
                             </div>
-                            <div className="p-col-6">
+                            {/* <div className="p-col-6">
                                 <div style={{ marginTop: '5px' }}>
                                     <h1 style={{ fontSize: '12px', color: 'black', fontWeight: 700 }}>Advanced
                                         <span style={{ marginLeft: '20px' }}>
@@ -296,20 +299,20 @@ const ProposalBuilderForm = ({ manageService, setManageService, dataPro, setData
                                         </span>
                                     </h1>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         {advancedSwitch && <div style={{ marginLeft: '20px' }}><CreateAudienceTabView /></div>}
                     </TabPanel>
                 </TabView>
-                <div className="p-grid" style={{maxWidth:'30vw'}}>
-                <div className="p-col-5">
-                </div>
-                <div className="p-col-4">
-                <CustomizedButtons label='Cancel' onClickHandler={(e) => { console.log(e);}} />
-                </div>
-                <div className="p-col-3">
-                <CustomizedButtons label='Save' onClickHandler={(e) => { console.log(e);}} />
-                </div>
+                <div className="p-grid" style={{ maxWidth: '30vw' }}>
+                    <div className="p-col-5">
+                    </div>
+                    <div className="p-col-4">
+                        <CustomizedButtons label='Cancel' onClickHandler={(e) => { console.log(e); }} />
+                    </div>
+                    <div className="p-col-3">
+                        <CustomizedButtons label='Save' onClickHandler={(e) => { console.log(e); }} />
+                    </div>
                 </div>
             </Dialog>
         </>);

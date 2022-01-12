@@ -5,6 +5,7 @@ import { Dropdown } from 'primereact/dropdown';
 import {  CustomizedPTButtons } from '../../../components/buttons/pbutton';
 import { TabPanel, TabView } from 'primereact/tabview';
 import { InputText } from 'primereact/inputtext';
+import './createaud.css';
 const CreateAudienceTabView = () => {
     return (<>
  
@@ -12,10 +13,10 @@ const CreateAudienceTabView = () => {
                             <h1 style={{ fontSize: '12px', color: 'black', fontWeight: 700 }}>Specialization</h1>
                             <div className="p-grid" style={{ maxWidth: '30vw' }}>
                                 <div className="p-col-6">
-                                    <Dropdown options={[]} optionLabel="name" style={{ width: '100%', height: '50px' }} placeholder="Includes" />
+                                    <Dropdown options={[]} optionLabel="name" style={{ width: '100%'}} placeholder="Includes" />
                                 </div>
                                 <div className="p-col-6">
-                                    <Dropdown options={[]} optionLabel="name" style={{ width: '100%', height: '50px' }} placeholder="All" />
+                                    <Dropdown options={[]} optionLabel="name" style={{ width: '100%'}} placeholder="All" />
                                 </div>
                             </div>
                             <br />
@@ -24,20 +25,20 @@ const CreateAudienceTabView = () => {
                                 <TabPanel header='Geo Fencing'>
                                     <div className="p-grid" style={{ marginLeft: '12px', maxWidth: '27vw' }}>
                                         <div className="p-col-6">
-                                            <Dropdown options={[]} optionLabel="name" style={{ width: '100%', height: '50px' }} placeholder="Includes" />
+                                            <Dropdown options={[]} optionLabel="name" style={{ width: '100%'}} placeholder="Includes" />
                                         </div>
                                         <div className="p-col-6">
-                                            <Dropdown options={[]} optionLabel="name" style={{ width: '100%', height: '50px' }} placeholder="All" />
+                                            <Dropdown options={[]} optionLabel="name" style={{ width: '100%' }} placeholder="All" />
                                         </div>
                                     </div>
                                 </TabPanel>
                                 <TabPanel header='Postal/Zip Code'>
                                     <div className="p-grid" style={{ marginLeft: '12px', maxWidth: '27vw' }}>
                                         <div className="p-col-6">
-                                            <Dropdown options={[]} optionLabel="name" style={{ width: '100%', height: '50px' }} placeholder="Includes" />
+                                            <Dropdown options={[]} optionLabel="name" style={{ width: '100%' }} placeholder="Includes" />
                                         </div>
                                         <div className="p-col-6 spech">
-                                            <InputText style={{ height: '55px !important', maxHeight: '55px !important' }} placeholder="Postal/Zip Code" />
+                                            <InputText style={{}} placeholder="Postal/Zip Code" />
                                         </div>
                                         <div className="p-col-6">
                                             <div style={{ marginTop: '5px' }}>
