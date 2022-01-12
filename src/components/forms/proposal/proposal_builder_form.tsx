@@ -25,16 +25,17 @@ const ProposalBuilderForm = ({
     campaignObj, setCampaignObj, audience, setAudience,
     channel, setChannel, bidStr, setBidstr, durationf,
     durationt, reach, businessRule, freq, setDurationf, setDurationt,
-    setReach, setBusinessRule, setFreq
+    setReach, setBusinessRule, setFreq, tabs, setTabs, campaignType
 }: {
     manageService: boolean, setManageService: React.Dispatch<React.SetStateAction<boolean>>,
     dataPro: string, setDataPro: React.Dispatch<React.SetStateAction<string>>, network: Map<string, string>,
     setNetwork: React.Dispatch<React.SetStateAction<Map<string, string>>>, setCampaignType: React.Dispatch<React.SetStateAction<Map<string, string>>>,
     campaignObj: Map<string, string>, setCampaignObj: React.Dispatch<React.SetStateAction<Map<string, string>>>,
     audience: Map<string, string>, setAudience: React.Dispatch<React.SetStateAction<Map<string, string>>>,
-    channel: Map<string, string>, setChannel: React.Dispatch<any>, bidStr: Map<string, string>, setBidstr: React.Dispatch<any>, durationf: Map<string, string>,
-    durationt: Map<string, string>, reach: Map<string, string>, businessRule: Map<string, boolean>, freq: Map<string, string>, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
-    setReach: React.Dispatch<React.SetStateAction<Map<string, string>>>, setBusinessRule: React.Dispatch<React.SetStateAction<Map<string, boolean>>>, setFreq: React.Dispatch<any>
+    channel: Map<string, string>, setChannel: React.Dispatch<any>, bidStr: Map<string, string>, setBidstr: React.Dispatch<any>, durationf: Map<string, any>,
+    durationt: Map<string, any>, reach: Map<string, string>, businessRule: Map<string, boolean>, freq: Map<string, string>, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
+    setReach: React.Dispatch<React.SetStateAction<Map<string, string>>>, setBusinessRule: React.Dispatch<React.SetStateAction<Map<string, boolean>>>, setFreq: React.Dispatch<any>, tabs: string[], setTabs: React.Dispatch<any>,
+    campaignType: Map<string, string>
 }) => {
     const [tabNumb, setTabNum] = useState(0);
     const [openDialog, setOpenDialog] = useState(false);
@@ -73,31 +74,59 @@ const ProposalBuilderForm = ({
     React.useEffect(() => {
         const tabName = tabNumb.toString();
         const tabData = campValue.join(',');
-        const data = new Map<string, string>();
+        let data = new Map<string, string>();
+        if (campaignType !== undefined) {
+            data = new Map<string, string>(campaignType);
+            if (data.has(tabNumb.toString())) {
+                data.delete(tabNumb.toString());
+            }
+        }
         data.set(tabName, tabData);
         setCampaignType(data);
 
     }, [campValue]);
     React.useEffect(() => {
-        console.log(names);
+        setTabs([...names]);
     }, [names]);
     const multiCheck = (e: any) => {
-        const channelL = channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',') : [];
-        if (channelL.includes(e.value)) {
-            const index = channelL.indexOf(e.value);
-            const newC = [...channelL];
-            newC.splice(index, 1);
-            const tabName = tabNumb.toString();
-            const tabData = newC.join(',');
-            const data = new Map<string, string>();
-            data.set(tabName, tabData);
-            setChannel(data);
+        if (channel !== undefined && channel.get(tabNumb.toString()) !== undefined) {
+            const channelL = channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',') : [];
+            if (channelL.includes(e.value)) {
+                const index = channelL.indexOf(e.value);
+                const newC = [...channelL];
+                newC.splice(index, 1);
+                const tabName = tabNumb.toString();
+                const tabData = newC.join(',');
+                let data = new Map<string, string>();
+                data = new Map<string, string>(channel);
+                if (data.has(tabNumb.toString())) {
+                    data.delete(tabNumb.toString());
+                }
+                data.set(tabName, tabData);
+                setChannel(data);
+            } else {
+                const newC = [...channelL];
+                newC.push(e.value);
+                const tabName = tabNumb.toString();
+                const tabData = newC.join(',');
+                let data = new Map<string, string>();
+                data = new Map<string, string>(channel);
+                if (data.has(tabNumb.toString())) {
+                    data.delete(tabNumb.toString());
+                }
+                data.set(tabName, tabData);
+                setChannel(data);
+            }
         } else {
-            const newC = [...channelL];
-            newC.push(e.value);
             const tabName = tabNumb.toString();
-            const tabData = newC.join(',');
-            const data = new Map<string, string>();
+            const tabData = e.value;
+            let data = new Map<string, string>();
+            if (channel !== undefined) {
+                data = new Map<string, string>(channel);
+                if (data.has(tabNumb.toString())) {
+                    data.delete(tabNumb.toString());
+                }
+            }
             data.set(tabName, tabData);
             setChannel(data);
         }
@@ -114,7 +143,13 @@ const ProposalBuilderForm = ({
             }
             const tabName = tabNumb.toString();
             const tabData = str;
-            const data = new Map<string, string>();
+            let data = new Map<string, string>();
+            if (audience !== undefined) {
+                data = new Map<string, string>(audience);
+                if (data.has(tabNumb.toString())) {
+                    data.delete(tabNumb.toString());
+                }
+            }
             data.set(tabName, tabData);
             setAudience(data);
         }
@@ -155,15 +190,44 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-9">
                                 <span className="p-field-radiobutton" style={{ display: 'inline' }}>
-                                    <RadioButton value="POC" onChange={(e) => { setNetwork(e.value); }} checked={network !== undefined && network[tabNumb.toString()] === 'POC'} />
+                                    <RadioButton value="POC" onChange={(e) => {
+                                        let data = new Map<string, string>();
+                                        if (network !== undefined) {
+                                            data = new Map<string, string>(network);
+                                            if (data.has(tabNumb.toString())) {
+                                                data.delete(tabNumb.toString());
+                                            }
+                                        } data.set(tabNumb.toString(), e.value);
+                                        setNetwork(data);
+                                    }
+                                    } checked={network !== undefined && network.get(tabNumb.toString()) === 'POC'} />
                                     <label style={{ fontSize: '11px' }}>POC</label>
                                 </span>
                                 <span className="p-field-radiobutton" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <RadioButton value="Endemic" onChange={(e) => { setNetwork(e.value); }} checked={network !== undefined && network[tabNumb.toString()] === 'Endemic'} />
+                                    <RadioButton value="Endemic" onChange={(e) => {
+                                        let data = new Map<string, string>();
+                                        if (network !== undefined) {
+                                            data = new Map<string, string>(network);
+                                            if (data.has(tabNumb.toString())) {
+                                                data.delete(tabNumb.toString());
+                                            }
+                                        } data.set(tabNumb.toString(), e.value);
+                                        setNetwork(data);
+                                    }} checked={network !== undefined && network.get(tabNumb.toString()) === 'Endemic'} />
                                     <label style={{ fontSize: '11px' }}>Endemic</label>
                                 </span>
                                 <span className="p-field-radiobutton" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <RadioButton value="Opti-Channel" onChange={(e) => { setNetwork(e.value); }} checked={network !== undefined && network[tabNumb.toString()] === 'Opti-Channel'} />
+                                    <RadioButton value="Opti-Channel" onChange={(e) => {
+                                        let data = new Map<string, string>(network);
+                                        if (network !== undefined) {
+                                            data = new Map<string, string>(network);
+                                            if (data.has(tabNumb.toString())) {
+                                                data.delete(tabNumb.toString());
+                                            }
+                                        }
+                                        data.set(tabNumb.toString(), e.value);
+                                        setNetwork(data);
+                                    }} checked={network !== undefined && network.get(tabNumb.toString()) === 'Opti-Channel'} />
                                     <label style={{ fontSize: '11px' }}>Opti-Channel</label>
                                 </span>
                             </div>
@@ -178,8 +242,14 @@ const ProposalBuilderForm = ({
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Objective</span>
                             </div>
                             <div className="p-col-6">
-                                <InputTextarea rows={4} value={campaignObj !== undefined ? campaignObj[tabNumb.toString()] : ''} onChange={(e) => {
-                                    const data = new Map<string, string>();
+                                <InputTextarea rows={4} value={campaignObj !== undefined ? campaignObj.get(tabNumb.toString()) : ''} onChange={(e) => {
+                                    let data = new Map<string, string>();
+                                    if (campaignObj !== undefined) {
+                                        data = new Map<string, string>(campaignObj);
+                                        if (data.has(tabNumb.toString())) {
+                                            data.delete(tabNumb.toString());
+                                        }
+                                    }
                                     data.set(tabNumb.toString(), e.target.value);
                                     setCampaignObj(data);
                                 }} style={{ width: '100%' }} />
@@ -200,15 +270,15 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-6">
                                 <span className="p-field-checkbox" style={{ display: 'inline' }}>
-                                    <Checkbox value="Web" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',').includes('Web') : [].includes('Web')} />
+                                    <Checkbox value="Web" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Web') : [].includes('Web')} />
                                     <label style={{ fontSize: '11px', marginTop: '4px' }}>Web</label>
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <Checkbox value="Mobile" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',').includes('Mobile') : [].includes('Mobile')} />
+                                    <Checkbox value="Mobile" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Mobile') : [].includes('Mobile')} />
                                     <label style={{ fontSize: '11px', marginTop: '4px' }}>Mobile</label>
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
-                                    <Checkbox value="Email" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel[tabNumb.toString()].length > 2 ? channel[tabNumb.toString()].toString().split(',').includes('Email') : [].includes('Email')} />
+                                    <Checkbox value="Email" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Email') : [].includes('Email')} />
                                     <label style={{ fontSize: '11px', marginTop: '4px' }}>Email</label>
                                 </span>
                             </div>
@@ -218,9 +288,29 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-6">
                                 <span>
-                                    <Calendar id="icon" showIcon style={{ width: '45%', maxHeight: '28px', fontSize: '10px' }} value={durationf !== undefined && durationf[tabNumb.toString()]} onChange={(e) => setDurationf(new Map<string, any>().set(tabNumb.toString(), e.value))} />
+                                    <Calendar id="icon" showIcon style={{ width: '45%', maxHeight: '28px', fontSize: '10px' }} value={durationf !== undefined && durationf.get(tabNumb.toString())} onChange={(e) => {
+                                        let data = new Map<string, any>();
+                                        if (durationf !== undefined) {
+                                            data = new Map<string, any>(durationf);
+                                            if (data.has(tabNumb.toString())) {
+                                                data.delete(tabNumb.toString());
+                                            }
+                                        }
+                                        data.set(tabNumb.toString(), e.value);
+                                        setDurationf(data);
+                                    }} />
                                     <span>
-                                        <Calendar id="icon" showIcon style={{ width: '45%', marginLeft: '10px', maxHeight: '28px', fontSize: '10px' }} value={durationt !== undefined && durationt[tabNumb.toString()]} onChange={(e) => setDurationt(new Map<string, any>().set(tabNumb.toString(), e.value))} />
+                                        <Calendar id="icon" showIcon style={{ width: '45%', marginLeft: '10px', maxHeight: '28px', fontSize: '10px' }} value={durationt !== undefined && durationt.get(tabNumb.toString())} onChange={(e) => {
+                                            let data = new Map<string, any>();
+                                            if (durationt !== undefined) {
+                                                data = new Map<string, any>(durationt);
+                                                if (data.has(tabNumb.toString())) {
+                                                    data.delete(tabNumb.toString());
+                                                }
+                                            }
+                                            data.set(tabNumb.toString(), e.value);
+                                            setDurationt(data);
+                                        }} />
                                     </span>
                                 </span>
                             </div>
@@ -236,7 +326,18 @@ const ProposalBuilderForm = ({
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Reach</span>
                             </div>
                             <div className="p-col-6">
-                                <InputText className="custInp" placeholder="" value={reach !== undefined ? reach[tabNumb.toString()] : ''} onChange={(e) => { setReach(new Map<string, string>().set(tabNumb.toString(), e.target.value)); }} />
+                                <InputText className="custInp" placeholder="" value={reach !== undefined ? reach.get(tabNumb.toString()) : ''} onChange={(e) => {
+                                    let data = new Map<string, string>();
+
+                                    if (reach !== undefined) {
+                                        data = new Map<string, string>(reach);
+                                        if (data.has(tabNumb.toString())) {
+                                            data.delete(tabNumb.toString());
+                                        }
+                                    }
+                                    data.set(tabNumb.toString(), e.target.value);
+                                    setReach(data);
+                                }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">

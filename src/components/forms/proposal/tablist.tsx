@@ -30,7 +30,7 @@ const TabList = ({ setOpenDialog, changeTab, names, number, tabNumb, setNumber, 
         nlist.push(campDict);
         setNumber(number + 1);
         setList(nlist);
-        setNames(namesL);
+        setNames([...namesL]);
     };
     const RemovenewTab = () => {
         if (list.length > 1) {

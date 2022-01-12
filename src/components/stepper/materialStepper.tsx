@@ -95,7 +95,7 @@ export default function MaterialStepper({ manageService, setManageService, dataP
     campaignObj, setCampaignObj, audience, setAudience,
     channel, setChannel, bidStr, setBidstr, durationf,
     durationt, reach, businessRule, freq, setDurationf, setDurationt,
-    setReach, setBusinessRule, setFreq, agency, client, brand, businessObj, market, setAgency, setClient, setBrand, setBusinessObj, setMarket }: {
+    setReach, setBusinessRule, setFreq, agency, client, brand, businessObj, market, setAgency, setClient, setBrand, setBusinessObj, setMarket, tabs, setTabs, campaignType }: {
         manageService: boolean, setManageService: React.Dispatch<React.SetStateAction<boolean>>, dataPro: string, setDataPro: React.Dispatch<React.SetStateAction<string>>,
         network: Map<string, string>, setNetwork: React.Dispatch<React.SetStateAction<Map<string, string>>>, setCampaignType: React.Dispatch<React.SetStateAction<Map<string, string>>>,
         campaignObj: Map<string, string>, setCampaignObj: React.Dispatch<React.SetStateAction<Map<string, string>>>, audience: Map<string, string>, setAudience: React.Dispatch<React.SetStateAction<Map<string, string>>>,
@@ -103,7 +103,8 @@ export default function MaterialStepper({ manageService, setManageService, dataP
         durationt: Map<string, string>, reach: Map<string, string>, businessRule: Map<string, boolean>, freq: Map<string, string>, setDurationf: React.Dispatch<any>, setDurationt: React.Dispatch<any>,
         setReach: React.Dispatch<React.SetStateAction<Map<string, string>>>, setBusinessRule: React.Dispatch<React.SetStateAction<Map<string, boolean>>>, setFreq: React.Dispatch<any>, agency: string,
         client: string, brand: string,
-        businessObj: string, market: string, setAgency: React.Dispatch<React.SetStateAction<string>>, setClient: React.Dispatch<React.SetStateAction<string>>, setBrand: React.Dispatch<React.SetStateAction<string>>, setBusinessObj: React.Dispatch<React.SetStateAction<string>>, setMarket: (string) => void
+        businessObj: string, market: string, setAgency: React.Dispatch<React.SetStateAction<string>>, setClient: React.Dispatch<React.SetStateAction<string>>, setBrand: React.Dispatch<React.SetStateAction<string>>, setBusinessObj: React.Dispatch<React.SetStateAction<string>>, setMarket: (string) => void, tabs: string[], setTabs: any,
+        campaignType: Map<string, string>
     }) {
     const [activeStep, setActiveStep] = React.useState(0);
     const [openDialog, setOpenDialog] = useState(false);
@@ -138,7 +139,7 @@ export default function MaterialStepper({ manageService, setManageService, dataP
                                     campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}
                                     channel={channel} setChannel={setChannel} bidStr={bidStr} setBidstr={setBidstr} durationf={durationf}
                                     durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
-                                    setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} />}
+                                    setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} tabs={tabs} setTabs={setTabs} campaignType={campaignType} />}
                             </StepContent>
                         </Step>
                     ))}

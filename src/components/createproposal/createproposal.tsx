@@ -17,7 +17,7 @@ const CreateProposal = () => {
      const [campaignObj, setCampaignObj] = useState<Map<string, string>>();
      const [audience, setAudience] = useState<Map<string, string>>();
      const [channel, setChannel] = useState<Map<string, string>>();
-     const [tabs, setTabs] = useState<string[]>();
+     const [tabs, setTabs] = useState<string[]>([]);
      const [bidStr, setBidstr] = useState<Map<string, string>>();
      const [durationf, setDurationf] = useState<Map<string, any>>();
      const [durationt, setDurationt] = useState<Map<string, any>>();
@@ -44,21 +44,38 @@ const CreateProposal = () => {
 
                }]
      };
-
+     React.useEffect(() => {
+          console.log(network, 'n /n',
+               campaignType, 'c /n',
+               campaignObj, 'cO /n',
+               audience, 'a /n',
+               channel, 'chan /n',
+               tabs, 'tabs /n',
+               bidStr, 'bidS /n',
+               durationf, 'df /n',
+               durationt, 'dt /n',
+               reach, 're /n',
+               businessRule, 'br /n',
+               freq, 'f /n',
+               manageService, 'mS /n');
+     }, [network,
+          campaignType,
+          campaignObj,
+          audience,
+          channel,
+          tabs,
+          bidStr,
+          durationf,
+          durationt,
+          reach,
+          businessRule,
+          freq,
+          manageService,]);
      const option = {
           rotation: -90,
           circumference: 180,
           cutout: '85%',
      };
-     React.useEffect(() => {
-          if (network !== undefined && network.size > 0) {
-               const netTabs = new Array<string>();
-               for (const key of network.keys()) {
-                    netTabs.push(key);                  //Lokesh Raj John
-               }
-               setTabs([...netTabs]);
-          }
-     }, [network]);
      return (
           <>
                <div style={{ marginTop: '40px', marginLeft: '100px', float: 'left', minWidth: '100%', width: '100%', maxWidth: '100%' }}>
@@ -67,10 +84,11 @@ const CreateProposal = () => {
                          <div className="p-col-8">
                               <MaterialStepper manageService={manageService} setManageService={setManageService}
                                    dataPro={dataPro} setDataPro={setDataPro} network={network} setNetwork={setNetwork} setCampaignType={setCampaignType}
+                                   campaignType={campaignType}
                                    campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}
                                    channel={channel} setChannel={setChannel} bidStr={bidStr} setBidstr={setBidstr} durationf={durationf}
                                    durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
-                                   setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} />
+                                   setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} tabs={tabs} setTabs={setTabs} />
                          </div>
                          <div className="p-col-4" style={{ borderRadius: '8px' }}>
                               <div className=" p-card" style={{ textAlign: 'left', borderRadius: '8px', float: 'left', maxWidth: '420px', width: '420px' }}>
@@ -97,35 +115,36 @@ const CreateProposal = () => {
                                    <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
                                         Market: <span style={{ color: 'grey' }}>{market}</span>
                                    </div>
-                                   <Divider />
+                                   {tabs !== undefined && <Divider />}
+                                   {tabs !== undefined && tabs.map((tab, index) => <>
+                                        <Accordion>
+                                             <AccordionTab key={tab} header={tab} style={{ color: '#A45BE4 !important' }}>
 
-                                   <Accordion activeIndex={0}>
-                                        {tabs !== undefined && tabs.map((tab, index) => <>  <AccordionTab key={index} header={tab} style={{ color: '#A45BE4 !important' }}>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Network: <span style={{ color: 'grey' }}>{network !== undefined ? network.get(index.toString()) : ''}</span>
+                                                  </div>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Campaign Type: <span style={{ color: 'grey' }}>{campaignType != undefined && campaignType.get(index.toString())}</span>
+                                                  </div>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Audience: <span style={{ color: 'grey' }}>{audience != undefined && audience.get(index.toString())}</span>
+                                                  </div>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Channel: <span style={{ color: 'grey' }}>{channel != undefined && channel.get(index.toString())}</span>
+                                                  </div>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Reach: <span style={{ color: 'grey' }}>{reach != undefined && reach.get(index.toString())}</span>
+                                                  </div>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Frequency: <span style={{ color: 'grey' }}>312</span>
+                                                  </div>
+                                                  <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
+                                                       Duration: <span style={{ color: 'grey' }}>{durationf != undefined && durationt != undefined && Math.abs(durationt.get(index.toString()) - durationf.get(index.toString())) / (1000 * 60 * 60 * 24)}</span>
+                                                  </div>
+                                             </AccordionTab>
 
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Network: <span style={{ color: 'grey' }}>{network[index.toString()]}</span>
-                                             </div>
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Campaign Type: <span style={{ color: 'grey' }}>{campaignType[index.toString()]}</span>
-                                             </div>
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Audience: <span style={{ color: 'grey' }}>{audience[index.toString()]}</span>
-                                             </div>
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Channel: <span style={{ color: 'grey' }}>{channel[index.toString()]}</span>
-                                             </div>
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Reach: <span style={{ color: 'grey' }}>{reach[index.toString()]}</span>
-                                             </div>
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Frequency: <span style={{ color: 'grey' }}>312</span>
-                                             </div>
-                                             <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
-                                                  Duration: <span style={{ color: 'grey' }}>{Math.abs(durationt[index.toString()] - durationf[index.toString()]) / (1000 * 60 * 60 * 24)}</span>
-                                             </div>
-                                        </AccordionTab></>
-                                        )}
-                                   </Accordion>
+                                        </Accordion></>
+                                   )}
                                    <Divider />
                                    <div style={{ fontSize: '11px', color: '#A45BE4', fontWeight: 500, paddingLeft: '10px' }}>
                                         Data Products: <span style={{ color: 'grey' }}>{dataPro}</span>
