@@ -135,12 +135,13 @@ export default function MaterialStepper({ manageService, setManageService, dataP
                                 </div>
                             </StepLabel>
                             <StepContent >
-                                {index === 0 ? <BasicProposalForm agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} onNext={handleNext} /> : <ProposalBuilderForm manageService={manageService} setManageService={setManageService}
-                                    dataPro={dataPro} setDataPro={setDataPro} network={network} setNetwork={setNetwork} setCampaignType={setCampaignType}
-                                    campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}
-                                    channel={channel} setChannel={setChannel} bidStr={bidStr} setBidstr={setBidstr} durationf={durationf}
-                                    durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
-                                    setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} tabs={tabs} setTabs={setTabs} campaignType={campaignType} />}
+                                {index === 0 ? <BasicProposalForm agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} onNext={handleNext} /> :
+                                    <ProposalBuilderForm manageService={manageService} setManageService={setManageService}
+                                        dataPro={dataPro} setDataPro={setDataPro} network={network} setNetwork={setNetwork} setCampaignType={setCampaignType}
+                                        campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}
+                                        channel={channel} setChannel={setChannel} bidStr={bidStr} setBidstr={setBidstr} durationf={durationf}
+                                        durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
+                                        setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} tabs={tabs} setTabs={setTabs} campaignType={campaignType} />}
                             </StepContent>
                         </Step>
                     ))}

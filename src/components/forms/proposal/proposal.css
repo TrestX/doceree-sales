@@ -26,12 +26,10 @@
 	padding: 6px 13px 4px 13px;
 	border-radius: 25px;
 	display: inline;
-	border: 3px solid lightgray;
 }
 .p-selectbutton.p-buttonset .p-button.p-highlight {
 	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%);
 	color: white;
-	border: 3px solid #6b42f6;
 }
 .p-buttonset .p-button:not(:first-of-type):not(:last-of-type) {
 	border-radius: 25px;

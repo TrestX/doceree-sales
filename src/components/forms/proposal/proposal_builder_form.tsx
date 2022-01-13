@@ -176,16 +176,16 @@ const ProposalBuilderForm = ({
             <div className="p-grid" style={{ padding: '4% 10% 4% 10%' }}>
                 <div className="p-col-2" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-agency" />
-                    <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }} >Campaign <i className="custom-target-icon-agency pi pi-info-circle" data-pr-tooltip="Campaigns" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
+                    <span style={{ fontSize: '13px', color: '#333' }} >Campaign <i className="custom-target-icon-agency pi pi-info-circle" data-pr-tooltip="Campaigns" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
                 </div>
                 <div className="p-col-10">
                     <div style={{ textAlign: 'left', marginLeft: '25px' }}>
                         <TabList setOpenDialog={setOpenDialog} changeTab={changeTab} names={names} number={number} tabNumb={tabNumb} setNumber={setNumber} setNames={setNames} />
                     </div>
-                    {names.map((tabName, index) => index === tabNumb && <div key={tabName} className="p-card" style={{ border: '1px solid black', borderRadius: '17px', padding: '15px', width: '100%' }}>
+                    {names.map((tabName, index) => index === tabNumb && <div key={tabName} className="p-card" style={{ border: '1px solid gray', borderRadius: '17px', padding: '15px', width: '100%' }}>
                         <div className="p-grid" style={{ textAlign: 'left' }}>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Network</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Network</span>
                             </div>
                             <div className="p-col-9">
                                 <span className="p-field-radiobutton" style={{ display: 'inline' }}>
@@ -231,14 +231,14 @@ const ProposalBuilderForm = ({
                                 </span>
                             </div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Type</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Campaign Type</span>
                             </div>
                             <div className="p-col-6">
                                 <SelectButton value={campaignType !== undefined && campaignType.get(tabNumb.toString()) !== undefined ? campaignType.get(tabNumb.toString()).split(',') : []} options={campaignOptions} onChange={(e) => { setCampaignName(e.value); }} itemTemplate={campOptsTemplate} multiple style={{ borderRadius: '25px', marginTop: '5px', padding: '5px' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Objective</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Campaign Objective</span>
                             </div>
                             <div className="p-col-6">
                                 <InputTextarea rows={4} value={campaignObj !== undefined ? campaignObj.get(tabNumb.toString()) : ''} onChange={(e) => {
@@ -255,7 +255,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Audience</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Audience</span>
                             </div>
                             <div className="p-col-6">
                                 <div style={{ marginLeft: '-17px' }}>
@@ -265,7 +265,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Channel</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Channel</span>
                             </div>
                             <div className="p-col-6">
                                 <span className="p-field-checkbox" style={{ display: 'inline' }}>
@@ -283,7 +283,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Duration</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Duration</span>
                             </div>
                             <div className="p-col-6">
                                 <span>
@@ -315,7 +315,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Bid Strategy</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Bid Strategy</span>
                             </div>
                             <div className="p-col-6">
                                 <Dropdown options={stra} value={bidStr != undefined && bidStr.get(tabNumb.toString()) !== undefined ? bidStr.get(tabNumb.toString()) : ''} onChange={(e) => {
@@ -332,7 +332,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Reach</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Reach</span>
                             </div>
                             <div className="p-col-6">
                                 <InputText className="custInp" placeholder="" value={reach !== undefined ? reach.get(tabNumb.toString()) : ''} onChange={(e) => {
@@ -350,7 +350,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Frequency</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Frequency</span>
                             </div>
                             <div className="p-col-6">
                                 <span>
@@ -362,7 +362,7 @@ const ProposalBuilderForm = ({
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
-                                <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Business Rule</span>
+                                <span style={{ fontSize: '13px', color: '#333' }}>Business Rule</span>
                             </div>
                             <div className="p-col-6">
                                 <span className="p-field-radiobutton" style={{ display: 'inline' }}>
@@ -375,7 +375,7 @@ const ProposalBuilderForm = ({
                 </div>
                 <div className="p-col-3" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-client" />
-                    <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Data Products <i className="custom-target-icon-client pi pi-info-circle" data-pr-tooltip="Data Products" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
+                    <span style={{ fontSize: '13px', color: '#333' }}>Data Products <i className="custom-target-icon-client pi pi-info-circle" data-pr-tooltip="Data Products" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
                 </div>
                 <div className="p-col-8" style={{ textAlign: 'left' }}>
                     <span className="p-field-checkbox" style={{ display: 'inline' }}>
@@ -393,7 +393,7 @@ const ProposalBuilderForm = ({
                 </div>
                 <div className="p-col-3" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-brand" />
-                    <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600, paddingTop: '15px' }}>Managed Service <i className="custom-target-icon-brand pi pi-info-circle" data-pr-tooltip="Managed Service" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
+                    <span style={{ fontSize: '13px', color: '#333', paddingTop: '15px' }}>Managed Service <i className="custom-target-icon-brand pi pi-info-circle" data-pr-tooltip="Managed Service" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
                 </div>
                 <div className="p-col-8">
                     <div className="p-field-radiobutton">
@@ -424,7 +424,7 @@ const ProposalBuilderForm = ({
                                 </div>
                             </div>
                             <div className="p-col-6 spech">
-                                <h1 style={{ cursor: 'pointer', fontSize: '12px', color: 'grey' }}>Download Template</h1>
+                                <h1 style={{ cursor: 'pointer', fontSize: '13px', color: '#333' }}>Download Template</h1>
                             </div>
                             {/* <div className="p-col-6">
                                 <div style={{ marginTop: '5px' }}>

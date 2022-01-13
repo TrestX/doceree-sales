@@ -10,6 +10,8 @@ import { brandBodyTemplate, campaignsBodyTemplate, clientNameBodyTemplate, creat
 import { Toast } from 'primereact/toast';
 import { ViewProposal } from '../../viewmodal/proposalmodal';
 import { CustomizedPrimeButtonCustomPadding } from '../../buttons/pbutton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCheck, faCheckCircle, faChevronCircleRight, faEllipsisH, faExclamationCircle, faEye, faInfoCircle, faList, faPause, faPercent, faPercentage } from '@fortawesome/free-solid-svg-icons';
 const ManageColTable = () => {
     const toast = useRef(null);
     const [dateRange, setDateRange] = useState<Date | Date[] | undefined>(undefined);
@@ -47,7 +49,7 @@ const ManageColTable = () => {
     const itemsInReview = [
         {
             label: 'Submitted',
-            icon: 'pi pi-upload',
+            icon: 'pi pi-chevron-circle-right',
             command: () => {
                 setApprovedD(true);
             }
@@ -100,24 +102,48 @@ const ManageColTable = () => {
     ];
 
     const proposalStatBodyTemplate = (rowData) => {
-        let menu = <Menu model={itemsInReview} popup ref={menu1} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '160px' }} />;
+        let menu = <Menu model={itemsInReview} popup ref={menu1} id="popup_menu" style={{ fontSize: '10px', color: '#333', borderRadius: '14px', maxWidth: '160px' }} />;
         if (rowData.proposalStatus.includes('Submitted')) {
-            menu = <Menu model={items} popup ref={menu2} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '160px' }} />;
+            menu = <Menu model={items} popup ref={menu2} id="popup_menu" style={{ fontSize: '10px', color: '#333', borderRadius: '14px', maxWidth: '160px' }} />;
         }
 
 
         return <>
             {menu}
-            <span className={`${rowData && rowData.proposalStatus && rowData.proposalStatus.replace(/ /g, '').toLowerCase()}`} style={{ fontSize: '11px', textAlign: 'center' }}>
-                {rowData.proposalStatus === 'Approved' && <i className="pi pi-check" style={{ color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', backgroundColor: 'green', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus === 'Reply awaited' && <i className="pi pi-pause" style={{ backgroundColor: '#2952e5', color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus === 'Rejected' && <i className="pi pi-exclamation-circle" style={{ color: '#bc1a1a', fontSize: '11.5px', fontWeight: 700, marginRight: '5px' }}></i>}
-                {rowData.proposalStatus === 'To Do' && <i className="pi pi-align-justify" style={{ backgroundColor: '#6d1368', color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus === 'Submitted' && <i className="pi pi-chevron-right" style={{ backgroundColor: '#892af7', color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus === 'Draft' && <i className="pi pi-ellipsis-h" style={{ backgroundColor: '#fcbf07', color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus === 'In Review' && <i className="pi pi-wifi" style={{ backgroundColor: '#e5a629', color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus === 'Discount' && <i className="pi pi-percentage" style={{ backgroundColor: '#00ddff', color: 'white', fontSize: '7px', fontWeight: 700, marginRight: '5px', padding: '5px', borderRadius: '50%' }}></i>}
-                {rowData.proposalStatus} {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType') !== 'admin' && (rowData.proposalStatus === 'Submitted' || rowData.proposalStatus === 'In Review') && <i className="pi pi-chevron-down" style={{ fontSize: '11px', marginLeft: '6px', marginTop: '5px', cursor: 'pointer' }} onClick={(event) => rowData.proposalStatus !== 'Submitted' ? menu1.current.toggle(event) : menu2.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i>}</span></>;
+            <span className={`${rowData && rowData.proposalStatus && rowData.proposalStatus.replace(/ /g, '').toLowerCase()}`} style={{ fontSize: '11px', textAlign: 'center', marginBottom: '5px' }}>
+                {rowData.proposalStatus === 'Approved' && <FontAwesomeIcon icon={faCheck} size={'lg'} color='green' style={{
+                    backgroundColor: 'green', color: 'white',
+                    borderRadius: '50%',
+                    padding: '3px'
+                }} />}
+                {rowData.proposalStatus === 'Reply awaited' && <FontAwesomeIcon icon={faPause} size={'lg'} color='white' style={{
+                    backgroundColor: '#2952e5', color: 'white',
+                    borderRadius: '50%',
+                    padding: '3px'
+                }} />}
+                {rowData.proposalStatus === 'Rejected' && <FontAwesomeIcon icon={faExclamationCircle} size={'lg'} color='red' />}
+                {rowData.proposalStatus === 'To Do' && <FontAwesomeIcon icon={faBars} size={'lg'} color='white' style={{
+                    backgroundColor: 'purple', color: 'white',
+                    borderRadius: '50%',
+                    padding: '3px'
+                }} />}
+                {rowData.proposalStatus === 'Submitted' && <FontAwesomeIcon icon={faChevronCircleRight} size={'lg'} color='#892af7' />}
+                {rowData.proposalStatus === 'Draft' && <FontAwesomeIcon icon={faEllipsisH} size={'lg'} color='white' style={{
+                    backgroundColor: '#fcbf07', color: 'white',
+                    borderRadius: '50%',
+                    padding: '3px'
+                }} />}
+                {rowData.proposalStatus === 'In Review' && <FontAwesomeIcon icon={faEye} size={'lg'} color='white' style={{
+                    backgroundColor: '#e5a629', color: 'white',
+                    borderRadius: '50%',
+                    padding: '3px'
+                }} />}
+                {rowData.proposalStatus === 'Discount' && <FontAwesomeIcon icon={faPercentage} size={'lg'} color='white' style={{
+                    backgroundColor: '#00ddff', color: 'white',
+                    borderRadius: '50%',
+                    padding: '3px'
+                }} />}
+                &nbsp;{rowData.proposalStatus} {sessionStorage.getItem('accountType') && sessionStorage.getItem('accountType') !== 'admin' && (rowData.proposalStatus === 'Submitted' || rowData.proposalStatus === 'In Review') && <i className="pi pi-chevron-down" style={{ fontSize: '11px', marginLeft: '6px', marginTop: '5px', cursor: 'pointer' }} onClick={(event) => rowData.proposalStatus !== 'Submitted' ? menu1.current.toggle(event) : menu2.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i>}</span></>;
     };
 
     const rowExpansionTemplate = (daa) => {
@@ -141,7 +167,7 @@ const ManageColTable = () => {
     };
     const actionBodyTemplate = (rowData) => {
         if (rowData.proposalStatus === 'To Do' || rowData.proposalStatus === 'In Review') {
-            return <><Menu model={ellipiseitemsToDo} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;
+            return <><Menu model={ellipiseitemsToDo} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: '#333', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;
         } else {
             return <><Menu model={ellipiseitems} popup ref={menu} id="popup_menu" style={{ fontSize: '10px', color: 'gray', borderRadius: '14px', maxWidth: '150px' }} /><i className="pi pi-ellipsis-h" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup ></i></>;
         }
