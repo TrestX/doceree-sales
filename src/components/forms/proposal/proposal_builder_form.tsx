@@ -234,7 +234,7 @@ const ProposalBuilderForm = ({
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Type</span>
                             </div>
                             <div className="p-col-6">
-                                <SelectButton value={campaignType !== undefined && campaignType.get(tabNumb.toString()) !== undefined ? campaignType.get(tabNumb.toString()).split(',') : []} options={campaignOptions} onChange={(e) => { setCampaignName(e.value); }} itemTemplate={campOptsTemplate} multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
+                                <SelectButton value={campaignType !== undefined && campaignType.get(tabNumb.toString()) !== undefined ? campaignType.get(tabNumb.toString()).split(',') : []} options={campaignOptions} onChange={(e) => { setCampaignName(e.value); }} itemTemplate={campOptsTemplate} multiple style={{ borderRadius: '25px', marginTop: '5px', padding: '5px' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
@@ -278,7 +278,7 @@ const ProposalBuilderForm = ({
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
                                     <Checkbox value="Email" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Email') : [].includes('Email')} />
-                                    <label style={{ fontSize: '11px', marginTop: '4px' }}>Email</label>
+                                    <label style={{ fontSize: '11px' }}>Email</label>
                                 </span>
                             </div>
                             <div className="p-col-3"></div>

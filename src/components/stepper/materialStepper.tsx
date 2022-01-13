@@ -14,11 +14,12 @@ import { Circle } from '@mui/icons-material';
 import { StepIconProps } from '@mui/material/StepIcon';
 import { styled } from '@mui/material/styles';
 import BasicProposalForm from '../forms/proposal/basic_proposal_form';
-import { CustomizedPButtonsNI, CustomizedPrimeButton } from '../buttons/pbutton';
+import { CustomizedPButtonsNI, CustomizedPrimeButton, CustomizedPrimeHowerButton } from '../buttons/pbutton';
 import ProposalBuilderForm from '../forms/proposal/proposal_builder_form';
 import { Dialog } from 'primereact/dialog';
 import { ReqDiscount } from '../dialog/primedialog';
 import { useState } from 'react';
+import { grey } from '@mui/material/colors';
 const steps = [
     {
         label: 'Basic',
@@ -150,10 +151,10 @@ export default function MaterialStepper({ manageService, setManageService, dataP
                             <h1 style={{ fontSize: '12px', marginTop: '15px', textAlign: 'left', color: '#6b42f6', marginLeft: '40px', cursor: 'pointer' }} onClick={() => { setOpenDialog(true); }}>Raise a request for discount</h1>
 
                         </div>
-                        <div className='p-col-5' style={{ marginTop: '15px' }}>
-                            <CustomizedPrimeButton label={'Save'} fw={600} background={'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)'} brad={'25px'} color={'white'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
-                            <CustomizedPrimeButton label={'Preview'} fw={600} background={'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)'} brad={'25px'} color={'white'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
-                            <CustomizedPrimeButton label={'Submit'} fw={600} background={'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)'} brad={'25px'} color={'white'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
+                        <div className='p-col-5 button-background' style={{ marginTop: '15px' }}>
+                            <CustomizedPrimeHowerButton label={'Save'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
+                            <CustomizedPrimeHowerButton label={'Preview'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
+                            <CustomizedPrimeHowerButton label={'Submit'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
 
                         </div>
                     </div>}

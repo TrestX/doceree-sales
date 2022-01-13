@@ -2,7 +2,7 @@ import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import * as React from 'react';
 import { CustomizedButtons } from '../../buttons/button';
-import { CustomizedPTButtons, CustomizedPButtonsNI, CustomizedPrimeButton, CustomizedPrimeDButton } from '../../buttons/pbutton';
+import { CustomizedPTButtons, CustomizedPButtonsNI, CustomizedPrimeButton, CustomizedPrimeDButton, CustomizedPrimeHowerButton } from '../../buttons/pbutton';
 import { Dropdown } from 'primereact/dropdown';
 import './proposal.css';
 import { Tooltip } from 'primereact/tooltip';
@@ -66,8 +66,8 @@ const BasicProposalForm = ({ agency, client, brand, businessObj, market, setAgen
             <div className="p-col-8">
 
             </div>
-            <div className="p-col-2">
-                <CustomizedButtons label='Next' onClickHandler={() => { onNext(); }} />
+            <div className="p-col-2 button-background">
+                <CustomizedPrimeHowerButton label={'Next'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'16px'} onClickHandler={() => { onNext(); }} />
             </div>
         </div>);
 };

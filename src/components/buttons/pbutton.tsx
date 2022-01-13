@@ -51,7 +51,12 @@ export function CustomizedPrimeButton({ label, background, color, brad, fs, fw, 
 		</>
 	);
 }
-
+export function CustomizedPrimeHowerButton({ label, background, color, brad, fs, fw, onClickHandler }: { label: string, background: string, color: string, brad: string, fs: string, fw: number, onClickHandler }) {
+	return (
+		<>		    <PButton label={label} style={{ borderRadius: brad, border: '1px solid lightgray', background: background, color: color, fontWeight: fw, fontSize: fs, paddingTop: '4px', paddingBottom: '4px' }} onClick={onClickHandler} />
+		</>
+	);
+}
 
 export function CustomizedPrimeButtonCustomPadding({ label, background, color, brad, fs, fw, padding, onClickHandler }: { label: string, background: string, color: string, brad: string, fs: string, fw: number, padding: string, onClickHandler }) {
 	return (

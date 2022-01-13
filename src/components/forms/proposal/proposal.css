@@ -23,13 +23,15 @@
 	margin-right: 4px;
 	width: 40px;
 	font-size: 9px;
-	padding: 5px 13px;
+	padding: 6px 13px 4px 13px;
 	border-radius: 25px;
 	display: inline;
+	border: 3px solid lightgray;
 }
 .p-selectbutton.p-buttonset .p-button.p-highlight {
-	background-color: #6b42f6;
+	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%);
 	color: white;
+	border: 3px solid #6b42f6;
 }
 .p-buttonset .p-button:not(:first-of-type):not(:last-of-type) {
 	border-radius: 25px;
@@ -50,7 +52,7 @@
 	padding: 2px 10px;
 	font-size: 12px;
 }
-.spech .p-inputtext{
+.spech .p-inputtext {
 	max-height: 55px !important;
 }
 .p-input-icon-left > i:first-of-type,
@@ -64,28 +66,45 @@ div[class*="ReactFlagsSelect-module_selectValue_"] {
 div[class*="ReactFlagsSelect-module_selectValue__152eS"] {
 	font-size: 12px !important;
 }
-.ReactFlagsSelect-module_flagsSelect__2pfa2 .ReactFlagsSelect-module_selectBtn__19wW7 .ReactFlagsSelect-module_selectValue__152eS{
+.ReactFlagsSelect-module_flagsSelect__2pfa2
+	.ReactFlagsSelect-module_selectBtn__19wW7
+	.ReactFlagsSelect-module_selectValue__152eS {
 	font-size: 12px !important;
 }
 
-.ReactFlagsSelect-module_flagsSelect__2pfa2 .ReactFlagsSelect-module_selectOptions__3LNBJ{
+.ReactFlagsSelect-module_flagsSelect__2pfa2
+	.ReactFlagsSelect-module_selectOptions__3LNBJ {
 	font-size: 12px;
 }
 .p-selectbutton.p-buttonset .p-button .pi {
 	font-size: 12px !important;
 }
 .p-checkbox .p-checkbox-box {
-    border: 1px solid #757575;
-    background: #ffffff;
-    width: 15px;
-    height: 15px;
-    color: rgba(0, 0, 0, 0.87);
-    border-radius: 4px;
+	border: 2px solid #757575;
+	background: #ffffff;
+	width: 17px;
+	height: 17px;
+	margin-bottom: -5px;
+	color: rgba(0, 0, 0, 0.87);
+	border-radius: 3px;
 }
 .p-checkbox .p-checkbox-box {
-    border-radius: 5px;
+	border-radius: 3px;
 }
-.p-dropdown .p-dropdown-label{
-	padding-top:7px;
-	padding-bottom:25px;
+.p-dropdown .p-dropdown-label {
+	padding-top: 7px;
+	padding-bottom: 25px;
+}
+.p-checkbox .p-checkbox-box.p-highlight {
+	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%);
+	color: white;
+	border: 3px solid #6b42f6;
+}
+.p-checkbox {
+	margin-bottom: 1px !important;
+}
+.button-background .p-button:hover {
+	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%) !important;
+	color: white !important;
+	border: 1px solid #6b42f6 !important;
 }

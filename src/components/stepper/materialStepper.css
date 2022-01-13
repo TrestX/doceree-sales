@@ -7,3 +7,8 @@ div[class*="css-"][class*="-MuiCollapse-root-MuiStepContent-transition"] {
 div[class*="css-"][class*="-MuiSvgIcon-root-MuiStepIcon-root"] {
 	color: #6b42f6 !important;
 }
+.button-background .p-button:hover {
+	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%) !important;
+	color: white !important;
+	border: 1px solid #6b42f6 !important;
+}
