@@ -58,7 +58,6 @@ const ProposalBuilderForm = ({
     ];
 
     const [selectedAud, setSelectedAud] = useState(null);
-    const [campValue, setCampValue] = useState([]);
     const campaignOptions = [
         { name: 'Banner', value: 'Banner', icon: 'pi pi-image' },
         { name: 'Text', value: 'Text', icon: 'pi pi-qrcode', },
@@ -71,9 +70,9 @@ const ProposalBuilderForm = ({
         { name: 'Pediatrics', code: 'Pediatrics' },
     ];
 
-    React.useEffect(() => {
+    const setCampaignName = (value) => {
         const tabName = tabNumb.toString();
-        const tabData = campValue.join(',');
+        const tabData = value.join(',');
         let data = new Map<string, string>();
         if (campaignType !== undefined) {
             data = new Map<string, string>(campaignType);
@@ -84,7 +83,7 @@ const ProposalBuilderForm = ({
         data.set(tabName, tabData);
         setCampaignType(data);
 
-    }, [campValue]);
+    };
     React.useEffect(() => {
         setTabs([...names]);
     }, [names]);
@@ -235,7 +234,7 @@ const ProposalBuilderForm = ({
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Campaign Type</span>
                             </div>
                             <div className="p-col-6">
-                                <SelectButton value={campValue} options={campaignOptions} onChange={(e) => { setCampValue(e.value); }} itemTemplate={campOptsTemplate} multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
+                                <SelectButton value={campaignType !== undefined && campaignType.get(tabNumb.toString()) !== undefined ? campaignType.get(tabNumb.toString()).split(',') : []} options={campaignOptions} onChange={(e) => { setCampaignName(e.value); }} itemTemplate={campOptsTemplate} multiple style={{ borderRadius: '25px', marginTop: '0px' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
@@ -319,7 +318,17 @@ const ProposalBuilderForm = ({
                                 <span style={{ fontSize: '12px', color: 'grey', fontWeight: 600 }}>Bid Strategy</span>
                             </div>
                             <div className="p-col-6">
-                                <Dropdown options={stra} value={bidStr} onChange={(e) => { setBidstr(e.value); }} optionLabel="name" style={{ width: '12rem', fontSize: '8px', color: 'gray' }} />
+                                <Dropdown options={stra} value={bidStr != undefined && bidStr.get(tabNumb.toString()) !== undefined ? bidStr.get(tabNumb.toString()) : ''} onChange={(e) => {
+                                    let data = new Map<string, string>();
+                                    if (bidStr !== undefined) {
+                                        data = new Map<string, string>(bidStr);
+                                        if (data.has(tabNumb.toString())) {
+                                            data.delete(tabNumb.toString());
+                                        }
+                                    }
+                                    data.set(tabNumb.toString(), e.value);
+                                    setBidstr(data);
+                                }} optionLabel="name" style={{ width: '12rem', fontSize: '8px', color: 'gray' }} />
                             </div>
                             <div className="p-col-3"></div>
                             <div className="p-col-3">
