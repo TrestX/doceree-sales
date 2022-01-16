@@ -79,7 +79,7 @@ const CreateProposal = () => {
      return (
           <>
                <div style={{ marginTop: '40px', marginLeft: '100px', float: 'left', minWidth: '100%', width: '100%', maxWidth: '100%' }}>
-                    <h1 style={{ fontSize: '25px', fontWeight: 700, color: '#5e5d5d', textAlign: 'left' }}>Create Proposal</h1>
+                    <h1 style={{ fontSize: '28px', fontWeight: 600, marginLeft: '40px', color: '#5e5d5d', textAlign: 'left' }}>Create Proposal</h1>
                     <div className="p-grid">
                          <div className="p-col-8">
                               <MaterialStepper manageService={manageService} setManageService={setManageService}
@@ -90,11 +90,11 @@ const CreateProposal = () => {
                                    durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
                                    setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} tabs={tabs} setTabs={setTabs} />
                          </div>
-                         <div className="p-col-4" style={{ borderRadius: '8px' }}>
-                              <div className=" p-card" style={{ textAlign: 'left', borderRadius: '8px', float: 'left', maxWidth: '420px', width: '420px' }}>
+                         <div className="p-col-3" style={{ borderRadius: '4px', marginTop: '8px' }}>
+                              <div style={{ textAlign: 'left', borderRadius: '4px', float: 'left', maxWidth: '420px', width: '398.683px', border: '1px solid lightgray' }}>
                                    <Chart type="doughnut" data={chartData} options={option} style={{ position: 'relative', width: '40%', marginLeft: 'auto', marginRight: 'auto' }} />
-                                   <div style={{ position: 'relative', fontSize: '14px', fontWeight: 600, marginTop: '-60px', marginLeft: '180px' }}>$280,90</div>
-                                   <div style={{ position: 'relative', fontSize: '9px', marginLeft: '170px' }}>Estimated budget</div>
+                                   <div style={{ position: 'relative', fontSize: '14px', fontWeight: 600, marginTop: '-60px', marginLeft: '120px' }}>$280,90</div>
+                                   <div style={{ position: 'relative', fontSize: '9px', marginLeft: '110px' }}>Estimated budget</div>
                                    <Divider />
                                    <div style={{ fontSize: '11px', color: 'grey', fontWeight: 500, paddingLeft: '10px' }}>
                                         Proposal Name

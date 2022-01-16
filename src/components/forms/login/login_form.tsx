@@ -33,8 +33,8 @@ const LoginForm = () => {
     return (
         <>
             <Toast ref={toast} />
-            <div style={{ fontWeight: 400, fontSize: '16px', marginLeft: '10px', marginTop: '10%' }}>LOGIN</div>
-            <div style={{ fontWeight: 600, fontSize: '17px', marginTop: '6px', marginLeft: '10px' }}>Unlock the Power</div>
+            <div style={{ fontWeight: 500, fontSize: '1.5rem', marginLeft: '10px', marginTop: '90px' }}>LOGIN</div>
+            <div style={{ fontWeight: 600, fontSize: '28px', marginTop: '15px', marginLeft: '10px' }}>Unlock the Power</div>
             <div className='p-grid' style={{ marginTop: '16px', marginLeft: '0px' }}>
                 <div className='p-col-12 p-md-6'>
                     <CustomPrimeInputTextField placeholder={'Email'} email={setEmail} />

@@ -28,8 +28,8 @@
 	display: inline;
 }
 .p-selectbutton.p-buttonset .p-button.p-highlight {
-	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%);
-	color: white;
+	background-color: white;
+	border: 1px solid #a45be4;
 }
 .p-buttonset .p-button:not(:first-of-type):not(:last-of-type) {
 	border-radius: 25px;
@@ -78,14 +78,21 @@ div[class*="ReactFlagsSelect-module_selectValue__152eS"] {
 	font-size: 12px !important;
 }
 .p-checkbox .p-checkbox-box {
-	border: 2px solid #757575;
+	border: 1px solid #757575;
 	background: #ffffff;
-	width: 17px;
-	height: 17px;
-	margin-bottom: -5px;
+	width: 15px;
+	height: 15px;
 	color: rgba(0, 0, 0, 0.87);
 	border-radius: 3px;
+	padding: 0px;
 }
+.p-checkbox {
+	width: 15px !important;
+	height: 15px !important;
+	border-radius: 0% !important;
+	transition: none !important;
+}
+
 .p-checkbox .p-checkbox-box {
 	border-radius: 3px;
 }
@@ -96,7 +103,7 @@ div[class*="ReactFlagsSelect-module_selectValue__152eS"] {
 .p-checkbox .p-checkbox-box.p-highlight {
 	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%);
 	color: white;
-	border: 3px solid #6b42f6;
+	border: 1px solid #6b42f6;
 }
 .p-checkbox {
 	margin-bottom: 1px !important;

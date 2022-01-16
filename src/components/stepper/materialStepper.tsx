@@ -20,6 +20,7 @@ import { Dialog } from 'primereact/dialog';
 import { ReqDiscount } from '../dialog/primedialog';
 import { useState } from 'react';
 import { grey } from '@mui/material/colors';
+import { Container } from '@mui/material';
 const steps = [
     {
         label: 'Basic',
@@ -30,50 +31,35 @@ const steps = [
 ];
 
 
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-    [`&.${stepConnectorClasses.alternativeLabel}`]: {
-        top: 22,
-    },
-    [`&.${stepConnectorClasses.active}`]: {
-        [`& .${stepConnectorClasses.line}`]: {
-            backgroundImage:
-                'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
-        },
-    },
-    [`&.${stepConnectorClasses.completed}`]: {
-        [`& .${stepConnectorClasses.line}`]: {
-            backgroundImage:
-                'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
-        },
-    },
-    [`& .${stepConnectorClasses.line}`]: {
-        height: 3,
-        border: 0,
-        backgroundColor:
-            theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
-        borderRadius: 1,
-    },
-}));
-
 const ColorlibStepIconRoot = styled('div')<{
     ownerState: { completed?: boolean; active?: boolean };
 }>(({ theme, ownerState }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
     zIndex: 1,
-    color: '#fff',
-    width: 25,
-    height: 25,
+    color: '#ccc',
+    width: '14px !important',
+    height: '14px !important',
     display: 'flex',
     borderRadius: '50%',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundImage: 'linear-gradient(90deg, #e6e6e6, #bebebe)',
     ...(ownerState.active && {
-        backgroundColor:
-            '#6b42f6',
+        backgroundColor: '#6b3ffc !important',
+        border: '5px solid #6b3ffc !important',
+        color: 'white',
+        width: '17px !important',
+        height: '17px !important',
+        fontSize: '10px !important'
     }),
     ...(ownerState.completed && {
-        backgroundColor:
-            '#6b42f6',
+        backgroundColor: '#6b3ffc !important',
+
+        border: '5px solid #6b3ffc !important',
+        color: 'white',
+        width: '17px !important',
+        height: '17px !important',
+        fontSize: '10px !important'
+
     }),
 }));
 
@@ -81,8 +67,8 @@ function ColorlibStepIcon(props: StepIconProps) {
     const { active, completed, className } = props;
 
     const icons: { [index: string]: React.ReactElement } = {
-        1: <Circle style={{ fontSize: '15px' }} />,
-        2: <Circle style={{ fontSize: '15px' }} />,
+        1: <Circle style={{ fontSize: '9px' }} />,
+        2: <Circle style={{ fontSize: '9px' }} />,
     };
 
     return (
@@ -125,42 +111,43 @@ export default function MaterialStepper({ manageService, setManageService, dataP
 
     return (
         <>
-            <Box>
-                <Stepper activeStep={activeStep} orientation="vertical">
-                    {steps.map((step, index) => (
-                        <Step key={step.label}>
-                            <StepLabel StepIconComponent={ColorlibStepIcon} onClick={() => { activeStep === 0 ? handleNext() : handleBack(); }}>
-                                <div style={{ padding: '10px', background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)', borderRadius: '7px 7px 0px 0px', textAlign: 'left', color: 'white', fontWeight: 600, fontSize: '12px', }}>
-                                    <span style={{ marginLeft: '10px' }}>{step.label}</span>
-                                </div>
-                            </StepLabel>
-                            <StepContent >
-                                {index === 0 ? <BasicProposalForm agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} onNext={handleNext} /> :
-                                    <ProposalBuilderForm manageService={manageService} setManageService={setManageService}
-                                        dataPro={dataPro} setDataPro={setDataPro} network={network} setNetwork={setNetwork} setCampaignType={setCampaignType}
-                                        campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}
-                                        channel={channel} setChannel={setChannel} bidStr={bidStr} setBidstr={setBidstr} durationf={durationf}
-                                        durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
-                                        setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} tabs={tabs} setTabs={setTabs} campaignType={campaignType} />}
-                            </StepContent>
-                        </Step>
-                    ))}
-                </Stepper>
-                {activeStep === 1 &&
-                    <div className='p-grid'>
-                        <div className='p-col-7'>
-                            <h1 style={{ fontSize: '12px', marginTop: '15px', textAlign: 'left', color: '#6b42f6', marginLeft: '40px', cursor: 'pointer' }} onClick={() => { setOpenDialog(true); }}>Raise a request for discount</h1>
+            <Container>
+                <Box>
+                    <Stepper activeStep={activeStep} orientation="vertical">
+                        {steps.map((step, index) => (
+                            <Step key={step.label}>
+                                <StepLabel StepIconComponent={ColorlibStepIcon} onClick={() => { activeStep === 0 ? handleNext() : handleBack(); }}>
+                                    <div style={{ padding: '3px', background: 'linear-gradient(to right,#A45BE4 0%, #6B42F6 70%)', borderRadius: '4px 4px 0px 0px', textAlign: 'left', color: 'white', fontWeight: 600, fontSize: '12px', }}>
+                                        <span style={{ marginLeft: '10px', fontSize: '14px', fontWeight: '500' }}>{step.label}</span>
+                                    </div>
+                                </StepLabel>
+                                <StepContent style={{ backgroundColor: '#fff' }}>
+                                    {index === 0 ? <BasicProposalForm agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} onNext={handleNext} /> :
+                                        <ProposalBuilderForm manageService={manageService} setManageService={setManageService}
+                                            dataPro={dataPro} setDataPro={setDataPro} network={network} setNetwork={setNetwork} setCampaignType={setCampaignType}
+                                            campaignObj={campaignObj} setCampaignObj={setCampaignObj} audience={audience} setAudience={setAudience}
+                                            channel={channel} setChannel={setChannel} bidStr={bidStr} setBidstr={setBidstr} durationf={durationf}
+                                            durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
+                                            setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} tabs={tabs} setTabs={setTabs} campaignType={campaignType} />}
+                                </StepContent>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    {activeStep === 1 &&
+                        <div className='p-grid'>
+                            <div className='p-col-7'>
+                                <h1 style={{ fontSize: '12px', marginTop: '15px', textAlign: 'left', color: '#6b42f6', marginLeft: '40px', cursor: 'pointer' }} onClick={() => { setOpenDialog(true); }}>Raise a request for discount</h1>
 
-                        </div>
-                        <div className='p-col-5 button-background' style={{ marginTop: '15px' }}>
-                            <CustomizedPrimeHowerButton label={'Save'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
-                            <CustomizedPrimeHowerButton label={'Preview'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
-                            <CustomizedPrimeHowerButton label={'Submit'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
+                            </div>
+                            <div className='p-col-5 button-background' style={{ marginTop: '15px' }}>
+                                <CustomizedPrimeHowerButton label={'Save'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
+                                <CustomizedPrimeHowerButton label={'Preview'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
+                                <CustomizedPrimeHowerButton label={'Submit'} fw={600} background={'white'} brad={'25px'} color={'#6B42F6'} fs={'12px'} onClickHandler={() => { console.log('empty'); }} />
 
-                        </div>
-                    </div>}
-            </Box>
-
+                            </div>
+                        </div>}
+                </Box>
+            </Container>
             <Dialog header="" visible={openDialog} style={{ width: '40vw', borderRadius: '19px' }} onHide={() => { setOpenDialog(false); }}>
                 <ReqDiscount />
             </Dialog>

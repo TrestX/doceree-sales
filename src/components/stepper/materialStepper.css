@@ -1,11 +1,20 @@
 div[class*="css-"][class*="-MuiCollapse-root-MuiStepContent-transition"] {
 	border: 1px solid lightgray !important;
 	margin-top: -8px !important;
-	margin-right: -8px;
+	margin-right: 0px;
 }
 
 div[class*="css-"][class*="-MuiSvgIcon-root-MuiStepIcon-root"] {
 	color: #6b42f6 !important;
+}
+
+div[class*="css-"][class*="-MuiStepContent-root"] {
+	margin-left: 5px !important;
+	margin-right: -8px !important;
+}
+
+div[class*="css-"][class*="-MuiStepConnector-root"] {
+	margin-left: 5px !important;
 }
 .button-background .p-button:hover {
 	background: linear-gradient(to right, #a45be4 0%, #6b42f6 80%) !important;

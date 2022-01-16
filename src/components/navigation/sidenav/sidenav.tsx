@@ -5,7 +5,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 
 const closedMixin = (theme: Theme): CSSObject => ({
@@ -17,9 +17,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
   borderTopRightRadius: '18px',
   marginTop: '84px',
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(7)} + 43px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(9)} + 1px)`,
+    width: `calc(${theme.spacing(9)} + 43px)`,
   },
 });
 
@@ -63,7 +63,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     backgroundColor: 'red',
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    position:'fixed',
+    position: 'fixed',
     boxSizing: 'border-box',
     ...(!open && {
       ...closedMixin(theme),
@@ -85,7 +85,8 @@ export default function SideNav({ appbarComponent, sidebarComponent, contentComp
         {sidebarComponent}
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        {contentComponent}
+        <div style={{ marginTop: '20px', marginLeft: '10px' }}>        {contentComponent}
+        </div>
       </Box>
     </Box>
   );

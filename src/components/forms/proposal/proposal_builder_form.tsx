@@ -19,6 +19,8 @@ import { InputSwitch } from 'primereact/inputswitch';
 import CreateAudienceTabView from './createAudienceTabView';
 import { CustomizedButtons } from '../../buttons/button';
 import TabList from './tablist';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 
 const ProposalBuilderForm = ({
     manageService, setManageService, dataPro, setDataPro, network, setNetwork, setCampaignType,
@@ -169,11 +171,11 @@ const ProposalBuilderForm = ({
         }
     };
     const campOptsTemplate = (option) => {
-        return <i className={option.icon}><span > {option.name}</span></i>;
+        return <>{option.name === 'Banner' ? <FontAwesomeIcon icon={faImage} transform={{ flipX: true }} style={{ color: '#a45be4', backgroundColor: 'white', height: '13px', width: '13px' }} /> : option.name === 'Text' ? <img src='assets/text.svg' style={{ height: '10px', width: '13px' }} /> : option.name === 'SMS' ? <img src='assets/sms.svg' style={{ height: '10px', width: '13px' }} /> : <img src='assets/email.svg' style={{ height: '10px', width: '13px' }} />} <span style={{ fontWeight: '500', fontSize: '12px' }}> {option.name}</span></>;
     };
     return (
         <>
-            <div className="p-grid" style={{ padding: '4% 10% 4% 10%' }}>
+            <div className="p-grid" style={{ padding: '4% 2% 4% 2%' }}>
                 <div className="p-col-2" style={{ textAlign: 'left' }}>
                     <Tooltip target=".custom-target-icon-agency" />
                     <span style={{ fontSize: '13px', color: '#333' }} >Campaign <i className="custom-target-icon-agency pi pi-info-circle" data-pr-tooltip="Campaigns" data-pr-position="right" data-pr-at="right+5 top" data-pr-my="left center-2" style={{ fontSize: '11px', marginTop: '-6px' }}></i></span>
@@ -182,7 +184,7 @@ const ProposalBuilderForm = ({
                     <div style={{ textAlign: 'left', marginLeft: '25px' }}>
                         <TabList setOpenDialog={setOpenDialog} changeTab={changeTab} names={names} number={number} tabNumb={tabNumb} setNumber={setNumber} setNames={setNames} />
                     </div>
-                    {names.map((tabName, index) => index === tabNumb && <div key={tabName} className="p-card" style={{ border: '1px solid gray', borderRadius: '17px', padding: '15px', width: '100%' }}>
+                    {names.map((tabName, index) => index === tabNumb && <div key={tabName} className="p-card" style={{ border: '1px solid lightgray', borderRadius: '17px', padding: '15px', width: '80%' }}>
                         <div className="p-grid" style={{ textAlign: 'left' }}>
                             <div className="p-col-3">
                                 <span style={{ fontSize: '13px', color: '#333' }}>Network</span>
@@ -270,15 +272,15 @@ const ProposalBuilderForm = ({
                             <div className="p-col-6">
                                 <span className="p-field-checkbox" style={{ display: 'inline' }}>
                                     <Checkbox value="Web" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Web') : [].includes('Web')} />
-                                    <label style={{ fontSize: '11px', marginTop: '4px' }}>Web</label>
+                                    <label style={{ fontSize: '12px', marginTop: '4px' }}>Web</label>
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
                                     <Checkbox value="Mobile" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Mobile') : [].includes('Mobile')} />
-                                    <label style={{ fontSize: '11px', marginTop: '4px' }}>Mobile</label>
+                                    <label style={{ fontSize: '12px', marginBottom: '4px' }}>Mobile</label>
                                 </span>
                                 <span className="p-field-checkbox" style={{ display: 'inline', marginLeft: '15px' }}>
                                     <Checkbox value="Email" onChange={(e) => { multiCheck(e); }} checked={channel !== undefined && channel.get(tabNumb.toString()) !== undefined && channel.get(tabNumb.toString()).length > 2 ? channel.get(tabNumb.toString()).toString().split(',').includes('Email') : [].includes('Email')} />
-                                    <label style={{ fontSize: '11px' }}>Email</label>
+                                    <label style={{ fontSize: '12px', bottom: '10px' }}>Email</label>
                                 </span>
                             </div>
                             <div className="p-col-3"></div>
