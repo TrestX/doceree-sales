@@ -15,7 +15,6 @@ const ManageProposalPage = () => {
             <SideNav appbarComponent={<><SalesTopBar /></>} sidebarComponent={<><SalesSideBarContent list={sideBarContent} /></>} contentComponent={<><ManageProposal />
             </>} />
         }
-
     </>);
 };
 

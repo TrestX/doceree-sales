@@ -23,24 +23,24 @@ const CreateAudienceTabView = () => {
                             <h1 style={{ fontSize: '12px', color: 'black', fontWeight: 700 }}>Location</h1>
                             <TabView>
                                 <TabPanel header='Geo Fencing'>
-                                    <div className="p-grid" style={{ marginLeft: '12px', maxWidth: '27vw' }}>
-                                        <div className="p-col-6">
+                                    <div className="p-grid" style={{maxWidth: '27vw' }}>
+                                        <div className="p-col-6" style={{marginLeft:'-15px'}}>
                                             <Dropdown options={[]} optionLabel="name" style={{ width: '100%'}} placeholder="Includes" />
                                         </div>
-                                        <div className="p-col-6">
+                                        <div className="p-col-6" >
                                             <Dropdown options={[]} optionLabel="name" style={{ width: '100%' }} placeholder="All" />
                                         </div>
                                     </div>
                                 </TabPanel>
                                 <TabPanel header='Postal/Zip Code'>
-                                    <div className="p-grid" style={{ marginLeft: '12px', maxWidth: '27vw' }}>
-                                        <div className="p-col-6">
+                                    <div className="p-grid" style={{ maxWidth: '27vw' }}>
+                                        <div className="p-col-6" style={{marginLeft:'-15px'}}>
                                             <Dropdown options={[]} optionLabel="name" style={{ width: '100%' }} placeholder="Includes" />
                                         </div>
                                         <div className="p-col-6 spech">
-                                            <InputText style={{}} placeholder="Postal/Zip Code" />
+                                            <InputText style={{height:'18px'}} placeholder="Postal/Zip Code" />
                                         </div>
-                                        <div className="p-col-6">
+                                        <div className="p-col-6" style={{marginLeft:'-27px'}}>
                                             <div style={{ marginTop: '5px' }}>
                                                 <CustomizedPTButtons label='Upload file' onClickHandler={() => { console.log(''); }} icon={'plus-circle'} />
                                             </div>

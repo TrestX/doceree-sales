@@ -1,16 +1,20 @@
 .p-password input {
 	max-height: 18px;
-	font-size: 16px;
+font-size:12px;
 	color: #212529;
+	width: 100% !important;
+}
+.p-password{
+	width: 100% !important;
 }
 .p-inputtext {
 	max-height: 18px;
-	font-size: 16px;
+font-size:12px;
 	color: #212529;
 }
 
 .p-input-icon-left > .p-inputtext {
-	font-size: 16px;
+font-size:12px;
 	color: #212529;
 	padding-left: 3rem;
 	width: 100%;
@@ -18,50 +22,3 @@
 	background-color: transparent;
 }
 
-@media only screen and (max-width: 1240px) {
-	.p-password input {
-		max-width: 185px !important;
-	}
-	.p-inputtext {
-		max-width: 190px !important;
-	}
-	.p-input-icon-left > .p-inputtext {
-		max-width: 100% !important;
-	}
-}
-
-@media only screen and (max-width: 1045px) {
-	.p-password input {
-		max-width: 140px !important;
-	}
-	.p-inputtext {
-		max-width: 135px !important;
-	}
-	.p-input-icon-left > .p-inputtext {
-		max-width: 100% !important;
-	}
-}
-
-@media only screen and (max-width: 765px) {
-	.p-password input {
-		max-width: 220px !important;
-	}
-	.p-inputtext {
-		max-width: 215px !important;
-	}
-	.p-input-icon-left > .p-inputtext {
-		max-width: 100% !important;
-	}
-}
-
-@media only screen and (max-width: 595px) {
-	.p-password input {
-		max-width: 160px !important;
-	}
-	.p-inputtext {
-		max-width: 155px !important;
-	}
-	.p-input-icon-left > .p-inputtext {
-		max-width: 100% !important;
-	}
-}

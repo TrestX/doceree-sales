@@ -90,8 +90,8 @@ const CreateProposal = () => {
                                    durationt={durationt} reach={reach} businessRule={businessRule} freq={freq} setDurationf={setDurationf} setDurationt={setDurationt}
                                    setReach={setReach} setBusinessRule={setBusinessRule} setFreq={setFreq} agency={agency} client={client} brand={brand} businessObj={businessObj} market={market} setAgency={setAgency} setClient={setClient} setBrand={setBrand} setBusinessObj={setBusinessObj} setMarket={setMarket} tabs={tabs} setTabs={setTabs} />
                          </div>
-                         <div className="p-col-3" style={{ borderRadius: '4px', marginTop: '8px' }}>
-                              <div style={{ textAlign: 'left', borderRadius: '4px', float: 'left', maxWidth: '420px', width: '398.683px', border: '1px solid lightgray' }}>
+                         <div className="p-col-4" style={{ borderRadius: '4px', marginTop: '8px' }}>
+                              <div style={{ textAlign: 'left', borderRadius: '4px', float: 'left', maxWidth: '420px', border: '1px solid lightgray' }}>
                                    <Chart type="doughnut" data={chartData} options={option} style={{ position: 'relative', width: '40%', marginLeft: 'auto', marginRight: 'auto' }} />
                                    <div style={{ position: 'relative', fontSize: '14px', fontWeight: 600, marginTop: '-60px', marginLeft: '120px' }}>$280,90</div>
                                    <div style={{ position: 'relative', fontSize: '9px', marginLeft: '110px' }}>Estimated budget</div>
